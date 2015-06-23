@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Minigolfer</string>
+
+    <string name="title_section1">New Game</string>
+    <string name="title_section2">View Previous Games</string>
+    <string name="title_section3">Settings</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- New game fragment strings -->
+    <string name="new_game_fragment">New game fragment</string>
+
+    <!-- View game fragment strings-->
+    <string name="view_game_fragment">View game fragment</string>
+
+    <!-- Settings fragment strings -->
+    <string name="settings_fragment">Settings</string>
+
+    <string name="pref_colorScheme">Theme</string>
+    <string name="pref_colorSchemeType">Choose a theme</string>
+    <string-array name="pref_colorSchemeTypes_entries">
+        <item>Teal</item>
+        <item>Orange</item>
+        <item>Indigo</item>
+        <item>Red</item>
+    </string-array>
+
+    <string-array name="orangePrefs">
+        <item>123456</item>
+        <item>654321</item>
+    </string-array>
+
+    <string-array name="pref_colorSchemeTypes_values">
+        <item>Teal</item>
+        <!--        <item>@array/orangePrefs</item>-->
+        <item>Orange</item>
+        <item>Indigo</item>
+        <item>Red</item>
+    </string-array>
+    <string name="pref_colorSchemeTypes_default">Orange</string>
+    <string name="menu_title">Edit</string>
+
+
+
+
+
+</resources>

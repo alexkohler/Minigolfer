@@ -1,0 +1,5 @@
+6-23: initializing project. Running into problems getting theme to work. Need to spec out what you want UI to look like BEFORE you dive into it.
+
+TODO:
+Probably need to use themes intead of programatic colors
+Add floating button dependency - https://github.com/futuresimple/android-floating-action-button 
