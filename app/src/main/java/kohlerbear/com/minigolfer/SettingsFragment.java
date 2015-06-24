@@ -61,7 +61,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     {
         if (key.equals(KEY_PREF_COLOR_SCHEME)) {
             String colorSchemePref = key;
-            String actionBarColorString;
+            String actionBarColorString = "#607D8B";
             switch (colorSchemePref)
             {
                 case "Teal":
@@ -80,12 +80,9 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                     actionBarColorString = "#607D8B";//Anything goes awry just go with teal
                     break;
             }
-            ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
-            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(actionBarColorString)));
-            //fix odd bug where actionbar goes gray.
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowTitleEnabled(true);
+//            ((ActionBarActivity)getActivity()).getSupportActionBar().setBackgroundDrawable(getResources().getColor(R.color.ple));
         }
+
     }
 
 }
