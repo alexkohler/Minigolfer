@@ -1,5 +1,11 @@
 6-23: initializing project. Running into problems getting theme to work. Need to spec out what you want UI to look like BEFORE you dive into it.
 
+6-24: Fleshing out tableview for new game 
+
 TODO:
+mess with styles.xml to get golf card workig properly 
+make sure your card is editable and pretty. (fixed size, scrollable, etc)
+your view card is exclusively tables, aye aye claptain 
 Probably need to use themes intead of programatic colors
 Add floating button dependency - https://github.com/futuresimple/android-floating-action-button 
+http://pantelisrodis.blogspot.com/2014/03/use-dynamically-placed-editable.html
