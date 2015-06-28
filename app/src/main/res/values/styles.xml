@@ -5,10 +5,16 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Divider">
+    <style name="Divider_vertical">
         <item name="android:layout_width">1dip</item>
         <item name="android:layout_height">match_parent</item>
-     <!--   <item name="android:background">@color/background_floating_material_dark</item> for divider color -->
+        <item name="android:background">@color/background_floating_material_dark</item> for divider color
+    </style>
+
+    <style name="Divider_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:background">@color/background_floating_material_dark</item> for divider color
     </style>
 
     <style name="Divider_invisible">
