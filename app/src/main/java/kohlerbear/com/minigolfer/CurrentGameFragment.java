@@ -52,7 +52,10 @@ public class CurrentGameFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    //http://stackoverflow.com/questions/12420396/how-to-retain-edittext-data-on-orientation-change
+    /* To solve your edit texts getting changed on orientation change.. You will need to do this with a list of edittexts that gets
+    updated/initialized as you input your number of players/add additional players
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

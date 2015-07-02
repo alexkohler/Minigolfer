@@ -2,6 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="kohlerbear.com.minigolfer.CurrentGameFragment">
 
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content">
     <!-- TODO: Update blank fragment layout -->
     <TableLayout
         android:id="@+id/table"
@@ -38,13 +43,17 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView12"
+            <EditText
+                android:id="@+id/name1EditText"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="Name 1"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -58,13 +67,17 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView13"
+            <EditText
+                android:id="@+id/name2EditText"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="Name 2"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -78,13 +91,17 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView14"
+            <EditText
+                android:id="@+id/name3EditText"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="Name 3"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -98,16 +115,21 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView15"
+            <EditText
+                android:id="@+id/name4EditText"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="Name 4"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
+                android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -121,10 +143,59 @@
         </LinearLayout>
 
 
+        <TableRow
+            android:id="@+id/playerGolfBallRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/playerGolfBallPlaceholder"
+                android:padding="5dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                ></EditText>
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
 
 
+        </TableRow>
 
-        <!-- Row 2 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Row 3 ( beginning of holes)  -->
         <TableRow
             android:id="@+id/hole1Row"
             android:layout_width="match_parent"
@@ -205,5 +276,6 @@
 
 
     </TableLayout>
+    </HorizontalScrollView>
 
 </FrameLayout>
