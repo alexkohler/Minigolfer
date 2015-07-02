@@ -2,7 +2,23 @@
 
 6-24: Fleshing out tableview for new game 
 
+7-1: Added horizontal scrollview, desired support is working without having to change much.
+
 TODO:
+need to look into adding vertical scrollview - test harder
+
+remove scrollview margins
+
+you want a sticky first hole column (separate tableview likely should do the trick
+
+need to figure out how to add additional players
+
+you also need a way to easily add/remove players after an initial number is 
+already given(people make mistakes and this makes your app more robust)
+
+push to open golf ball choice under each player's name
+
+
 mess with styles.xml to get golf card workig properly 
 make sure your card is editable and pretty. (fixed size, scrollable, etc)
 your view card is exclusively tables, aye aye claptain 
