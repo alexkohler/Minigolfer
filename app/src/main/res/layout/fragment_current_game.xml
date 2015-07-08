@@ -8,7 +8,6 @@
 
     <HorizontalScrollView
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content">
     <!-- TODO: Update blank fragment layout -->
     <TableLayout
@@ -16,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:stretchColumns="*"
         >
         <!-- removed stretch columns attribute -->
 
@@ -42,7 +40,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -66,7 +63,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -90,7 +86,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -114,7 +109,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -136,12 +130,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <EditText
+                android:id="@+id/name5EditText"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="Name 5"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/name6EditText"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="Name 6"
+                android:background="#00000000"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
-
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
 
@@ -164,7 +192,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -183,7 +210,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -194,11 +220,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
-
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
 
-        <!-- Row 3 ( beginning of holes)  -->
+        <!-- hole 1 ( beginning of holes)  -->
         <TableRow
             android:id="@+id/hole1Row"
             android:layout_width="match_parent"
@@ -217,7 +242,6 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -231,12 +255,11 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                ></EditText>
+                />
 
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
-
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
@@ -246,19 +269,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
-
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
 
-        <!-- Row 3 -->
+        <!-- hole 2 -->
         <TableRow
-            android:id="@+id/tableRow2"
+            android:id="@+id/hole2Row"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white" >
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/hole2Text"
                 android:padding="5dp"
                 android:text="2"
                 android:layout_gravity="center"
@@ -269,15 +291,839 @@
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
 
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
         </TableRow>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 3 -->
+        <TableRow
+            android:id="@+id/hole3Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole3Text"
+                android:padding="5dp"
+                android:text="3"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 4 -->
+        <TableRow
+            android:id="@+id/hole4Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole4Text"
+                android:padding="5dp"
+                android:text="4"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 5 -->
+        <TableRow
+            android:id="@+id/hole5Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole5Text"
+                android:padding="5dp"
+                android:text="5"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 6 -->
+        <TableRow
+            android:id="@+id/hole6Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole6Text"
+                android:padding="5dp"
+                android:text="6"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 6 -->
+        <TableRow
+            android:id="@+id/hole7Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole7Text"
+                android:padding="5dp"
+                android:text="7"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
 
 
+        <!-- Hole 7 -->
+        <TableRow
+            android:id="@+id/hole8Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
 
+            <TextView
+                android:id="@+id/hole8Text"
+                android:padding="5dp"
+                android:text="8"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 9 -->
+        <TableRow
+            android:id="@+id/hole9Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole9Text"
+                android:padding="5dp"
+                android:text="9"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- subtotal row -->
+        <TableRow
+            android:id="@+id/subtotalRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/subtotalPlaceholder"
+                android:padding="5dp"
+                android:text=" "
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/subtotalTextView"
+                android:padding="5dp"
+                android:text=" "
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 10 -->
+        <TableRow
+            android:id="@+id/hole10Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole10Text"
+                android:padding="5dp"
+                android:text="10"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 11 -->
+        <TableRow
+            android:id="@+id/hole11Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole11Text"
+                android:padding="5dp"
+                android:text="11"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 12 -->
+        <TableRow
+            android:id="@+id/hole12Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole12Text"
+                android:padding="5dp"
+                android:text="12"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 13 -->
+        <TableRow
+            android:id="@+id/hole13Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole13Text"
+                android:padding="5dp"
+                android:text="13"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 14 -->
+        <TableRow
+            android:id="@+id/hole14Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole14Text"
+                android:padding="5dp"
+                android:text="14"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 15 -->
+        <TableRow
+            android:id="@+id/hole15Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole15Text"
+                android:padding="5dp"
+                android:text="15"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 16 -->
+        <TableRow
+            android:id="@+id/hole16Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole16Text"
+                android:padding="5dp"
+                android:text="16"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 17 -->
+        <TableRow
+            android:id="@+id/hole17Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole17Text"
+                android:padding="5dp"
+                android:text="17"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- Hole 18 -->
+        <TableRow
+            android:id="@+id/hole18Row"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/hole18Text"
+                android:padding="5dp"
+                android:text="18"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:background="#00000000"
+                android:digits="0123456789.,"
+                android:ellipsize="start"
+                android:maxLines="1"
+                android:gravity="center"
+                android:hint="    "
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
+
+        <!-- total row -->
+        <TableRow
+            android:id="@+id/totalRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/totalPlaceholder"
+                android:padding="5dp"
+                android:text=" "
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/totalTextView"
+                android:padding="5dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+           <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
     </TableLayout>
     </HorizontalScrollView>
     </ScrollView>
