@@ -4,14 +4,16 @@
 
 7-1: Added horizontal scrollview, desired support is working without having to change much.
 
-TODO:
-need to look into adding vertical scrollview - test harder
+7-7: Added holes, need to get add button up and running. that is definitely the priority right now
 
-remove scrollview margins
+TODO:
+
+need to figure out how to add additional players (both UI placement and back end)
+
+remove scrollview margins if add button stuff doesn't take care of it automatically
 
 you want a sticky first hole column (separate tableview likely should do the trick
 
-need to figure out how to add additional players
 
 you also need a way to easily add/remove players after an initial number is 
 already given(people make mistakes and this makes your app more robust)
