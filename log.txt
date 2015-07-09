@@ -6,7 +6,10 @@
 
 7-7: Added holes, need to get add button up and running. that is definitely the priority right now
 
+7-8: got basics of button added, just need to add on click listener and place the button properly :)
+
 TODO:
+Spec: floating button with add/remove player, and trash game? Additional settings can go to the top of the action bar
 
 need to figure out how to add additional players (both UI placement and back end)
 

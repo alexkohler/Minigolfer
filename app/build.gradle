@@ -24,4 +24,5 @@ dependencies {
     // do not use dynamic updating.
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.github.machinarius:preferencefragment:0.1.1'
+    compile 'com.getbase:floatingactionbutton:1.9.1'
 }

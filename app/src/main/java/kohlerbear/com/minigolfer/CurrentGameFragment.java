@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,7 +38,8 @@ public class CurrentGameFragment extends Fragment {
         CurrentGameFragment fragment = new CurrentGameFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+//        args.putString(ARG_PARAM2, param2)
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,6 +51,7 @@ public class CurrentGameFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -60,7 +65,15 @@ public class CurrentGameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_current_game, container, false);
+       View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
+
+        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
+        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
+        addedOnce.setTitle("Added once");
+        rightLabels.addButton(addedOnce);
+
+
+        return myFragmentView;
     }
 
 
