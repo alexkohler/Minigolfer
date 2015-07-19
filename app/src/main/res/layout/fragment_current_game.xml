@@ -91,7 +91,7 @@
                 android:layout_height="match_parent" >
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
-
+<!--
             <EditText
                 android:id="@+id/name3EditText"
                 android:paddingBottom="10dp"
@@ -168,7 +168,9 @@
                 android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+        -->
         </TableRow>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -258,7 +260,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole1EditText" />
 
             <LinearLayout
                 android:layout_width="1dp"
@@ -307,7 +309,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole2EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -352,7 +354,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole3EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -397,7 +399,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole4EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -442,7 +444,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole5EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -487,7 +489,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole6EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -532,7 +534,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole7EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -578,7 +580,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole8EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -623,7 +625,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole9EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -679,6 +681,7 @@
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
 
+
         <!-- Hole 10 -->
         <TableRow
             android:id="@+id/hole10Row"
@@ -710,7 +713,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole10EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -755,7 +758,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole11EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -800,7 +803,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole12EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -845,7 +848,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole13EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -890,7 +893,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole14EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -935,7 +938,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole15EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -980,7 +983,7 @@
                 android:maxLines="1"
                 android:gravity="center"
                 android:hint="    "
-                />
+                android:id="@+id/player1Hole15EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -1128,53 +1131,8 @@
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
 
-        <com.getbase.floatingactionbutton.AddFloatingActionButton
-            android:id="@+id/normal_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            fab:fab_plusIconColor="@color/half_black"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/white_pressed"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"/>
 
 
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
-            android:id="@+id/right_labels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@id/normal_plus"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            fab:fab_addButtonColorNormal="@color/white"
-            fab:fab_addButtonColorPressed="@color/white_pressed"
-            fab:fab_addButtonPlusIconColor="@color/half_black"
-            fab:fab_addButtonSize="mini"
-            fab:fab_labelStyle="@style/menu_labels_style"
-            fab:fab_labelsPosition="right">
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_colorNormal="@color/white"
-                fab:fab_title="Label on the right"
-                fab:fab_colorPressed="@color/white_pressed"/>
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                fab:fab_colorNormal="@color/white"
-                fab:fab_size="mini"
-                fab:fab_title="Another one on the right"
-                fab:fab_colorPressed="@color/white_pressed"/>
-
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 
 
@@ -1182,5 +1140,52 @@
         <!-- Define our floating button -->
 
     </HorizontalScrollView>
+
     </ScrollView>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/right_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        fab:fab_addButtonColorNormal="@color/white"
+        fab:fab_addButtonColorPressed="@color/white_pressed"
+        fab:fab_addButtonPlusIconColor="@color/half_black"
+        fab:fab_addButtonSize="mini"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_title="Add player"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title="Remove player"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title="Finish game"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title="Discard game"
+            fab:fab_colorPressed="@color/white_pressed"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
 </FrameLayout>

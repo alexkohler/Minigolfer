@@ -67,10 +67,10 @@ public class CurrentGameFragment extends Fragment {
         // Inflate the layout for this fragment
        View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
 
-        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
-        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
-        addedOnce.setTitle("Added once");
-        rightLabels.addButton(addedOnce);
+//        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
+//        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
+//        addedOnce.setTitle("Added once");
+//        rightLabels.addButton(addedOnce);
 
 
         return myFragmentView;
