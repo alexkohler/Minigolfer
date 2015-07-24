@@ -4,6 +4,8 @@ package kohlerbear.com.minigolfer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -59,6 +61,9 @@ public class ViewGamesFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_games, container, false);
     }
+
+
+
 
 
 }
