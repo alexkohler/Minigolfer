@@ -29,11 +29,11 @@
     </style>
 
     <!-- GolfEntry style - used for inside each table entry where a user can enter golf scores. -->
-    <style name="golfEntry">
+    <style name="GolfEntry">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:inputType">numberDecimal</item>
-        <item name="android:background">#000000</item>
+        <item name="android:background">#ffffff</item>
         <item name="android:digits">0123456789.</item>
         <item name="android:ellipsize">start</item>
         <item name="android:maxLines">1</item>
@@ -41,20 +41,5 @@
         <item name="android:hint">"    "</item>
     </style>
 
-
-    <!--
-    <EditText
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:inputType="numberDecimal"
-    android:background="#00000000"
-    android:digits="0123456789.,"
-    android:ellipsize="start"
-    android:maxLines="1"
-    android:gravity="center"
-    android:hint="    "/>
-
-
-    -->
 
 </resources>

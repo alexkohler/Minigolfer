@@ -201,6 +201,7 @@
             </LinearLayout>
 
             <EditText
+                style="@style/GolfEntry"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -252,15 +253,7 @@
             </LinearLayout>
 
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole1EditText" />
 
             <LinearLayout
@@ -301,15 +294,7 @@
             </LinearLayout>
 
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole2EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -346,15 +331,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole3EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -391,15 +368,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole4EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -436,15 +405,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole5EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -481,15 +442,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole6EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -526,15 +479,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole7EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -572,15 +517,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole8EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -617,15 +554,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole9EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -705,15 +634,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole10EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -750,15 +671,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole11EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -795,15 +708,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole12EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -840,15 +745,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole13EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -885,15 +782,7 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                style="@style/GolfEntry"
                 android:id="@+id/player1Hole14EditText" />
             <LinearLayout
                 android:layout_width="1dp"
@@ -929,6 +818,14 @@
                 android:layout_height="match_parent" >
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
+            <EditText
+                style="@style/GolfEntry"
+                android:id="@+id/player1Hole15EditText" />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+            <View style="@style/Divider_vertical" />
+            </LinearLayout>
 
         </TableRow>
 
@@ -960,16 +857,8 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
-                android:id="@+id/player1Hole15EditText" />
+                style="@style/GolfEntry"
+                android:id="@+id/player1Hole16EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -1005,16 +894,8 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
-                />
+                style="@style/GolfEntry"
+                android:id="@+id/player1Hole17EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
@@ -1050,16 +931,8 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
             <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
-                />
+                style="@style/GolfEntry"
+                android:id="@+id/player1Hole18EditText" />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >

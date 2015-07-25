@@ -129,9 +129,9 @@ public class CurrentGameFragment extends Fragment {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Toast.makeText(getActivity().getApplicationContext(), "stub", Toast.LENGTH_SHORT).show();
-                return true;
+            //case R.id.action_settings:
+            //    Toast.makeText(getActivity().getApplicationContext(), "stub", Toast.LENGTH_SHORT).show();
+            //    return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
