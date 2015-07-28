@@ -202,15 +202,7 @@
 
             <EditText
                 style="@style/GolfEntry"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:background="#00000000"
-                android:digits="0123456789.,"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:hint="    "
+                android:id="@+id/sourceOfTruth"
                 ></EditText>
 
             <LinearLayout
@@ -262,6 +254,17 @@
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
 
+            <!-- to add a row...
+            <EditText
+                style="@style/GolfEntry"
+                android:id="@+id/player2Hole1EditText" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider_vertical" />
+            </LinearLayout>
+            -->
 
         </TableRow>
 
@@ -1048,3 +1051,5 @@
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
 </FrameLayout>
+
+

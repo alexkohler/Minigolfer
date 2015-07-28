@@ -1,7 +1,14 @@
 package kohlerbear.com.minigolfer;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v4.app.Fragment;
+import android.text.InputType;
+import android.text.TextUtils;
+import android.text.method.DigitsKeyListener;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,12 +16,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -62,6 +75,8 @@ public class CurrentGameFragment extends Fragment {
         // Inflate the layout for this fragment
        View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
         table  = (TableLayout) myFragmentView.findViewById(R.id.table);
+
+        addRow();
         removeRow();
 //        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 //        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
@@ -95,14 +110,24 @@ public class CurrentGameFragment extends Fragment {
 
     //Basis (research) for remove row function, pretty much what dictates whether or not a row shows is its existence in titletablerow
     //TODO figure out an elegant way to add in EditTexts to each of the new columns - looks like it just needs to be added to the end of the row along with a vertical divider
+/*
+        List<String> rows = new ArrayList<String>();
+        for (int i = 0; i < titleTableRow.getChildCount(); i++) {
+            View currentView = titleTableRow.getChildAt(i);
+            if (currentView instanceof EditText) {
+                String possibleDeletionCandidate = ((EditText) currentView).getText().toString();
+                rows.add(possibleDeletionCandidate);
+            }
 
+        }
+ */
     public void removeRow() {
         TableRow titleTableRow = (TableRow) table.findViewById(R.id.titleTableRow);
-        EditText row1 = (EditText) table.findViewById(R.id.name2EditText);
+
+
+        EditText row1 = (EditText) table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
+        //TODO use
         titleTableRow.removeView(row1);
-
-
-
 
     }
 
@@ -111,8 +136,12 @@ public class CurrentGameFragment extends Fragment {
         EditText newEditText = new EditText(getActivity());
         //titleTableRow.addView()//TODO figure out how to add custom components
 
+        final EditText golfEntry = new EditText(getActivity(), null, R.attr.GolfEntryStyle);
+        View Divider = new View(getActivity(), null, R.attr.DividerVerticalStyle);
 
-
+        TableRow hole1Row = (TableRow) table.findViewById(R.id.hole1Row);
+        hole1Row.addView(golfEntry);
+       // hole1Row.addView(Divider);
 
     }
 

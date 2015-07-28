@@ -12,6 +12,10 @@
 programmatically add column - http://stackoverflow.com/questions/13472393/add-column-to-table-programmatically
 
 7-22: get rest of delete buttons, and make sure they're white (or add them in another way)
+
+7-26: need to use viewgroup to group edittext and divider http://stackoverflow.com/questions/1367983/how-to-use-viewgroup-in-android - perhaps a horizontal linearlayout or something
+
+
 TODO:
 Spec: floating button with add/remove player, and trash game? Additional settings can go to the top of the action bar
 
