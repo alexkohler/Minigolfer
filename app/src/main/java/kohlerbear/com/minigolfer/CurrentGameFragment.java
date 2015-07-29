@@ -76,8 +76,8 @@ public class CurrentGameFragment extends Fragment {
        View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
         table  = (TableLayout) myFragmentView.findViewById(R.id.table);
 
-        addRow();
-        removeRow();
+        //addRow();
+        //removeRow();
 //        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 //        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
 //        addedOnce.setTitle("Added once");
@@ -128,6 +128,14 @@ public class CurrentGameFragment extends Fragment {
         EditText row1 = (EditText) table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
         //TODO use
         titleTableRow.removeView(row1);
+        for (int i = 0; i < titleTableRow.getChildCount(); i++) {
+            View currentView = titleTableRow.getChildAt(i);
+                if (currentView instanceof EditText) {
+                    Toast.makeText(getActivity(), "Node " + i, Toast.LENGTH_SHORT).show();
+                }
+
+        }
+
 
     }
 
@@ -141,7 +149,7 @@ public class CurrentGameFragment extends Fragment {
 
         TableRow hole1Row = (TableRow) table.findViewById(R.id.hole1Row);
         hole1Row.addView(golfEntry);
-       // hole1Row.addView(Divider);
+        hole1Row.addView(Divider);
 
     }
 

@@ -34,17 +34,13 @@
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
                 android:text="Hole"
+                android:background="#00000000"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/name1EditText"
@@ -63,11 +59,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/name2EditText"
@@ -86,11 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+ç∂
 <!--
             <EditText
                 android:id="@+id/name3EditText"
@@ -194,22 +181,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
 
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/sourceOfTruth"
-                ></EditText>
+                />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
 
 
 
@@ -238,21 +216,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole1EditText" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
 
             <!-- to add a row...
             <EditText
@@ -290,20 +257,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole2EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
         </TableRow>
 
         <LinearLayout
@@ -311,7 +267,6 @@
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
-
         <!-- Hole 3 -->
         <TableRow
             android:id="@+id/hole3Row"
@@ -328,19 +283,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole3EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -348,6 +294,7 @@
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
+
 
         <!-- Hole 4 -->
         <TableRow
@@ -365,21 +312,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole4EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-        </TableRow>
 
+        </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
@@ -402,27 +340,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole5EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
-
         <!-- Hole 6 -->
         <TableRow
             android:id="@+id/hole6Row"
@@ -439,19 +369,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole6EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -476,21 +397,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole7EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-        </TableRow>
 
+        </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
@@ -514,19 +425,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole8EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -534,7 +437,6 @@
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
-
         <!-- Hole 9 -->
         <TableRow
             android:id="@+id/hole9Row"
@@ -551,21 +453,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole9EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-        </TableRow>
 
+        </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
@@ -587,33 +480,38 @@
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/subtotalTextView1"
+                android:text="99"
+                android:gravity="center"
+                android:background="@drawable/edit_text_border"
+                android:textSize="16sp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <TextView
+                android:id="@+id/subtotalTextView2"
+                android:text="99"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
 
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="match_parent" >
                 <View style="@style/Divider_vertical" />
             </LinearLayout>
-            <TextView
-                android:id="@+id/subtotalTextView"
-                android:padding="5dp"
-                android:text=" "
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
-
 
         <!-- Hole 10 -->
         <TableRow
@@ -631,19 +529,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole10EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -668,19 +558,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole11EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -688,7 +570,6 @@
             android:layout_height="1dp" >
             <View style="@style/Divider_horizontal" />
         </LinearLayout>
-
         <!-- Hole 12 -->
         <TableRow
             android:id="@+id/hole12Row"
@@ -705,21 +586,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole12EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-        </TableRow>
 
+        </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp" >
@@ -742,19 +613,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole13EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -779,19 +642,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole14EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
         <LinearLayout
@@ -816,19 +670,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole15EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-            <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
 
         </TableRow>
 
@@ -854,26 +700,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole16EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp" >
-            <View style="@style/Divider_horizontal" />
-        </LinearLayout>
 
         <!-- Hole 17 -->
         <TableRow
@@ -891,26 +724,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole17EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp" >
-            <View style="@style/Divider_horizontal" />
-        </LinearLayout>
 
         <!-- Hole 18 -->
         <TableRow
@@ -928,26 +748,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole18EditText" />
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp" >
-            <View style="@style/Divider_horizontal" />
-        </LinearLayout>
+
 
         <!-- total row -->
         <TableRow
@@ -965,11 +773,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/totalTextView"
@@ -980,18 +784,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-           <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
+
         </TableRow>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp" >
-            <View style="@style/Divider_horizontal" />
-        </LinearLayout>
+
 
 
 
