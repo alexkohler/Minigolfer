@@ -77,7 +77,7 @@ public class CurrentGameFragment extends Fragment {
         table  = (TableLayout) myFragmentView.findViewById(R.id.table);
 
         //addRow();
-        //removeRow();
+        removeRow();
 //        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 //        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
 //        addedOnce.setTitle("Added once");
@@ -121,13 +121,27 @@ public class CurrentGameFragment extends Fragment {
 
         }
  */
-    public void removeRow() {
+    public void removeRow(/*pass in child number*/) {
+
+        //EditText row1 = (EditText) table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
+        //Instead of passing in the row itself, you can probably get away with passing in the child number
         TableRow titleTableRow = (TableRow) table.findViewById(R.id.titleTableRow);
+        titleTableRow.removeViewAt(2);
+        //TODO edittext holes 1-9
 
 
-        EditText row1 = (EditText) table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
+        TableRow subTotalRow = (TableRow) table.findViewById(R.id.subtotalRow);
+        subTotalRow.removeViewAt(2);//removing name 2 --> removing child at 2 (bada boom)
+        //TODO edittext holes 10-18
+
+       // TableRow totalRow = (TableRow) table.findViewById(R.id.totalRow);
+       // subTotalRow.removeViewAt(2);//removing name 2 --> removing child at 2 (bada boom)
+
+
+
+        //TODO will also have to know to remove its subtotal/total row
         //TODO use
-        titleTableRow.removeView(row1);
+        //titleTableRow.removeView(row1);
         for (int i = 0; i < titleTableRow.getChildCount(); i++) {
             View currentView = titleTableRow.getChildAt(i);
                 if (currentView instanceof EditText) {
