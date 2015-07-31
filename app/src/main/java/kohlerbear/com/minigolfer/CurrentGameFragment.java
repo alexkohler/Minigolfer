@@ -76,8 +76,8 @@ public class CurrentGameFragment extends Fragment {
        View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
         table  = (TableLayout) myFragmentView.findViewById(R.id.table);
 
-        //addRow();
-        removeRow();
+        addRow();
+        //removeRow();
 //        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 //        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
 //        addedOnce.setTitle("Added once");
@@ -155,15 +155,16 @@ public class CurrentGameFragment extends Fragment {
 
     public void addRow() {
         TableRow titleTableRow = (TableRow) table.findViewById(R.id.titleTableRow);
-        EditText newEditText = new EditText(getActivity());
-        //titleTableRow.addView()//TODO figure out how to add custom components
+        EditText newEditText = new EditText(getActivity(), null, R.attr.NameEntryStyle);
+        newEditText.setText("Name Added");
+       titleTableRow.addView(newEditText);
 
         final EditText golfEntry = new EditText(getActivity(), null, R.attr.GolfEntryStyle);
-        View Divider = new View(getActivity(), null, R.attr.DividerVerticalStyle);
 
-        TableRow hole1Row = (TableRow) table.findViewById(R.id.hole1Row);
+
+        TableRow hole1Row = (TableRow) table.findViewById(R.id.hole1Row);//TODO this isn't quite right..
         hole1Row.addView(golfEntry);
-        hole1Row.addView(Divider);
+
 
     }
 

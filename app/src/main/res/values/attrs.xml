@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="GolfEntryStyle" format="reference" />
+    <attr name="NameEntryStyle" format="reference" />
     <attr name="DividerVerticalStyle" format="reference" />
 </resources>

@@ -29,11 +29,11 @@
 
             <TextView
                 android:id="@+id/holeTitleText"
+                android:text="Hole"
                 android:paddingBottom="10dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
-                android:text="Hole"
                 android:background="#00000000"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -44,38 +44,14 @@
 
             <EditText
                 android:id="@+id/name1EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
                 android:text="Name 1"
-                android:background="@drawable/name_entry_border"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/NameEntry" />
 
-
+<!--
             <EditText
                 android:id="@+id/name2EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:background="@drawable/name_entry_border"
                 android:text="Name 2"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/NameEntry" /> -->
 
 
 <!--
