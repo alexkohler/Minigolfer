@@ -33,18 +33,20 @@
 
     <!-- GolfEntry style - used for inside each table entry where a user can enter golf scores. -->
     <style name="GolfEntry">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
         <item name="android:inputType">numberDecimal</item>
-        <item name="android:background">@drawable/edit_text_border</item>
+        <item name="android:background">@drawable/edit_text_border_two</item>
         <item name="android:digits">0123456789.</item>
         <item name="android:ellipsize">start</item>
         <item name="android:maxLines">1</item>
+        <item name="android:maxLength">2</item>
         <item name="android:gravity">center</item>
         <item name="android:hint">"    "</item>
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">fill_parent</item>
     </style>
+
 
     <!-- NameEntry style - used for each name entry in TitleTableRow -->
     <style name="NameEntry">
@@ -58,6 +60,17 @@
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="HoleText">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+
+        <item name="android:background">@drawable/edit_text_border_two</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

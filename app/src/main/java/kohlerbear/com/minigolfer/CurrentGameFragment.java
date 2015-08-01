@@ -1,33 +1,17 @@
 package kohlerbear.com.minigolfer;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Debug;
 import android.support.v4.app.Fragment;
-import android.text.InputType;
-import android.text.TextUtils;
-import android.text.method.DigitsKeyListener;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.RadioButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
-
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -38,10 +22,12 @@ import java.util.List;
 public class CurrentGameFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    private TableLayout table;
+    private TableLayout m_table;
+
+    private ArrayList<TableRow> m_holeRows = new ArrayList<>();
+
+
 
     public static Fragment newInstance(/*String param1, String param2*/) {
         CurrentGameFragment fragment = new CurrentGameFragment();
@@ -63,8 +49,6 @@ public class CurrentGameFragment extends Fragment {
     }
 
 
-
-
     //http://stackoverflow.com/questions/12420396/how-to-retain-edittext-data-on-orientation-change
     /* To solve your edit texts getting changed on orientation change.. You will need to do this with a list of edittexts that gets
     updated/initialized as you input your number of players/add additional players
@@ -73,11 +57,32 @@ public class CurrentGameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
-        table  = (TableLayout) myFragmentView.findViewById(R.id.table);
+        View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
+        m_table = (TableLayout) myFragmentView.findViewById(R.id.table);
+
+        //Initialization of tableRows - holes 1 - 4
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole1Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole2Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole3Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole4Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole5Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole6Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole7Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole8Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole9Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole10Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole11Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole12Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole13Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole14Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole15Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole16Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole17Row));
+        m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole18Row));
+
 
         addRow();
-        //removeRow();
+        //removeRow(1);
 //        FloatingActionsMenu rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 //        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
 //        addedOnce.setTitle("Added once");
@@ -92,15 +97,15 @@ public class CurrentGameFragment extends Fragment {
 
     public void tableCraziness() {
 
-        for(int i = 0, j = table.getChildCount(); i < j; i++) {
-            View view = table.getChildAt(i);
+        for(int i = 0, j = m_table.getChildCount(); i < j; i++) {
+            View view = m_table.getChildAt(i);
             if (view instanceof TableRow) {
                 // then, you can remove the the row you want...
                 TableRow currentRow = (TableRow) view;
                 View v = currentRow.getVirtualChildAt(2);
                     if (v instanceof EditText) {
                        EditText columnChunk = ((EditText) v);
-                       table.removeView(columnChunk);
+                       m_table.removeView(columnChunk);
 
                     }
 
@@ -121,20 +126,23 @@ public class CurrentGameFragment extends Fragment {
 
         }
  */
-    public void removeRow(/*pass in child number*/) {
+    public void removeRow(int childNumber) {
 
-        //EditText row1 = (EditText) table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
+        //EditText row1 = (EditText) m_table.findViewById(R.id.name2EditText); //this will be configurable via the name popup
         //Instead of passing in the row itself, you can probably get away with passing in the child number
-        TableRow titleTableRow = (TableRow) table.findViewById(R.id.titleTableRow);
-        titleTableRow.removeViewAt(2);
+        TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+        titleTableRow.removeViewAt(childNumber);
         //TODO edittext holes 1-9
+        for (TableRow row : m_holeRows) {
+                row.removeViewAt(childNumber);
+        }
 
 
-        TableRow subTotalRow = (TableRow) table.findViewById(R.id.subtotalRow);
-        subTotalRow.removeViewAt(2);//removing name 2 --> removing child at 2 (bada boom)
+        TableRow subTotalRow = (TableRow) m_table.findViewById(R.id.subtotalRow);
+        subTotalRow.removeViewAt(childNumber);//removing name 2 --> removing child at 2 (bada boom)
         //TODO edittext holes 10-18
 
-       // TableRow totalRow = (TableRow) table.findViewById(R.id.totalRow);
+       // TableRow totalRow = (TableRow) m_table.findViewById(R.id.totalRow);
        // subTotalRow.removeViewAt(2);//removing name 2 --> removing child at 2 (bada boom)
 
 
@@ -154,15 +162,26 @@ public class CurrentGameFragment extends Fragment {
     }
 
     public void addRow() {
-        TableRow titleTableRow = (TableRow) table.findViewById(R.id.titleTableRow);
+        TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
         EditText newEditText = new EditText(getActivity(), null, R.attr.NameEntryStyle);
         newEditText.setText("Name Added");
        titleTableRow.addView(newEditText);
 
         final EditText golfEntry = new EditText(getActivity(), null, R.attr.GolfEntryStyle);
+        golfEntry.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_text_border_two));
+        //Layout parameters not respected, so we need to take care of them ourselves!
+        final TableRow.LayoutParams lparams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.FILL_PARENT); // Width , height
+        golfEntry.setLayoutParams(lparams);
 
 
-        TableRow hole1Row = (TableRow) table.findViewById(R.id.hole1Row);//TODO this isn't quite right..
+
+        TableRow hole1Row = (TableRow) m_table.findViewById(R.id.hole1Row);//TODO this isn't quite right..
+        //experiment - I don't think layout options are being respected... this is TRUE!
+        //EditText layoutOptionsSource = (EditText) hole1Row.findViewById(R.id.player1Hole1EditText);
+        //golfEntry.setLayoutParams(layoutOptionsSource.getLayoutParams());
+
+
+
         hole1Row.addView(golfEntry);
 
 

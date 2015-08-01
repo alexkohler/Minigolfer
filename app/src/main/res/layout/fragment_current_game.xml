@@ -34,7 +34,7 @@
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:paddingTop="10dp"
-                android:background="#00000000"
+                android:background="@drawable/name_border"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
                 android:layout_gravity="center"
@@ -179,18 +179,22 @@
         <!-- hole 1 ( beginning of holes)  -->
         <TableRow
             android:id="@+id/hole1Row"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white" >
 
+
             <TextView
                 android:id="@+id/hole1Text"
-                android:padding="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:text="1"
                 android:layout_gravity="center"
                 android:textSize="16sp"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content" />
+
+
 
             <EditText
                 style="@style/GolfEntry"
@@ -224,6 +228,7 @@
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/player1Hole2EditText" />
+
         </TableRow>
 
         <LinearLayout
@@ -439,7 +444,7 @@
             <TextView
                 android:id="@+id/subtotalPlaceholder"
                 android:padding="5dp"
-                android:text=" "
+                android:text="Σ"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
@@ -670,7 +675,11 @@
                 android:id="@+id/player1Hole16EditText" />
 
         </TableRow>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
 
         <!-- Hole 17 -->
         <TableRow
@@ -695,6 +704,11 @@
 
         </TableRow>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
 
         <!-- Hole 18 -->
         <TableRow
@@ -719,7 +733,11 @@
 
         </TableRow>
 
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/Divider_horizontal" />
+        </LinearLayout>
 
         <!-- total row -->
         <TableRow
@@ -731,7 +749,7 @@
             <TextView
                 android:id="@+id/totalPlaceholder"
                 android:padding="5dp"
-                android:text=" "
+                android:text="Σ"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
@@ -742,7 +760,7 @@
             <TextView
                 android:id="@+id/totalTextView"
                 android:padding="5dp"
-                android:text=""
+                android:text="180"
                 android:layout_gravity="center"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
