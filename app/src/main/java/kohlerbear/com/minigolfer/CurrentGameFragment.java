@@ -60,6 +60,13 @@ public class CurrentGameFragment extends Fragment {
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("x", 3);
+    }
+
+
 
     //http://stackoverflow.com/questions/12420396/how-to-retain-edittext-data-on-orientation-change
     /* To solve your edit texts getting changed on orientation change.. You will need to do this with a list of edittexts that gets
@@ -91,9 +98,12 @@ public class CurrentGameFragment extends Fragment {
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole16Row));
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole17Row));
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole18Row));
-
-//        addRow();
-//        removeRow(2);
+        if (savedInstanceState != null ) {
+            if (savedInstanceState.containsKey("x")) {
+                int x = savedInstanceState.getInt("x");
+                Toast.makeText(getActivity(), x, Toast.LENGTH_SHORT).show();
+            }
+        }
 
         m_rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 
@@ -208,6 +218,7 @@ public class CurrentGameFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
 
 
     //On Click Listeners
