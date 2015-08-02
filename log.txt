@@ -15,26 +15,17 @@ programmatically add column - http://stackoverflow.com/questions/13472393/add-co
 
 7-26: need to use viewgroup to group edittext and divider http://stackoverflow.com/questions/1367983/how-to-use-viewgroup-in-android - perhaps a horizontal linearlayout or something
 
+8-2: finished add/remove functionality, and summing of rows. 
+
 
 TODO:
-Spec: floating button with add/remove player, and trash game? Additional settings can go to the top of the action bar
-
-need to figure out how to add additional players (both UI placement and back end)
 
 remove scrollview margins if add button stuff doesn't take care of it automatically
 
 you want a sticky first hole column (separate tableview likely should do the trick
 
-
-you also need a way to easily add/remove players after an initial number is 
-already given(people make mistakes and this makes your app more robust)
-
 push to open golf ball choice under each player's name
 
 
-mess with styles.xml to get golf card workig properly 
 make sure your card is editable and pretty. (fixed size, scrollable, etc)
 your view card is exclusively tables, aye aye claptain 
-Probably need to use themes intead of programatic colors
-Add floating button dependency - https://github.com/futuresimple/android-floating-action-button 
-http://pantelisrodis.blogspot.com/2014/03/use-dynamically-placed-editable.html
