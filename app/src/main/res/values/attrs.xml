@@ -3,4 +3,5 @@
     <attr name="GolfEntryStyle" format="reference" />
     <attr name="NameEntryStyle" format="reference" />
     <attr name="DividerVerticalStyle" format="reference" />
+    <attr name="TotalTextStyle" format="reference" />
 </resources>

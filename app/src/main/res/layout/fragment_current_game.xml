@@ -47,91 +47,6 @@
                 android:text="Name 1"
                 style="@style/NameEntry" />
 
-<!--
-            <EditText
-                android:id="@+id/name2EditText"
-                android:text="Name 2"
-                style="@style/NameEntry" /> -->
-
-
-<!--
-            <EditText
-                android:id="@+id/name3EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="Name 3"
-                android:background="#00000000"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/name4EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="Name 4"
-                android:background="#00000000"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:imeOptions="actionDone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/name5EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="Name 5"
-                android:background="#00000000"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:imeOptions="actionDone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/name6EditText"
-                android:paddingBottom="10dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:paddingTop="10dp"
-                android:text="Name 6"
-                android:background="#00000000"
-                android:ellipsize="start"
-                android:maxLines="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                android:imeOptions="actionDone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        -->
         </TableRow>
 
 
@@ -186,14 +101,9 @@
 
             <TextView
                 android:id="@+id/hole1Text"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                style="@style/HoleText"
                 android:text="1"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
+                />
 
 
             <EditText
@@ -218,12 +128,8 @@
 
             <TextView
                 android:id="@+id/hole2Text"
-                android:padding="5dp"
-                android:text="2"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="2" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -245,12 +151,8 @@
 
             <TextView
                 android:id="@+id/hole3Text"
-                android:padding="5dp"
-                android:text="3"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="3" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -274,12 +176,8 @@
 
             <TextView
                 android:id="@+id/hole4Text"
-                android:padding="5dp"
-                android:text="4"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="4" />
 
 
             <EditText
@@ -302,12 +200,8 @@
 
             <TextView
                 android:id="@+id/hole5Text"
-                android:padding="5dp"
-                android:text="5"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="5" />
 
 
             <EditText
@@ -331,12 +225,8 @@
 
             <TextView
                 android:id="@+id/hole6Text"
-                android:padding="5dp"
-                android:text="6"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="6" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -359,12 +249,8 @@
 
             <TextView
                 android:id="@+id/hole7Text"
-                android:padding="5dp"
-                android:text="7"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="7" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -387,12 +273,8 @@
 
             <TextView
                 android:id="@+id/hole8Text"
-                android:padding="5dp"
-                android:text="8"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="8" />
 
 
             <EditText
@@ -415,12 +297,8 @@
 
             <TextView
                 android:id="@+id/hole9Text"
-                android:padding="5dp"
-                android:text="9"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="9" />
 
 
             <EditText
@@ -443,35 +321,18 @@
 
             <TextView
                 android:id="@+id/subtotalPlaceholder"
-                android:padding="5dp"
-                android:text="Σ"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="Σ" />
+
             <TextView
                 android:id="@+id/subtotalTextView1"
                 android:text="99"
                 android:gravity="center"
-                android:background="@drawable/edit_text_border"
+                android:background="@drawable/edit_text_border_two"
                 android:textSize="16sp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" />
 
-            <TextView
-                android:id="@+id/subtotalTextView2"
-                android:text="99"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
-
-            <LinearLayout
-                android:layout_width="1dp"
-                android:layout_height="match_parent" >
-                <View style="@style/Divider_vertical" />
-            </LinearLayout>
 
         </TableRow>
 
@@ -491,12 +352,8 @@
 
             <TextView
                 android:id="@+id/hole10Text"
-                android:padding="5dp"
-                android:text="10"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="10" />
 
 
             <EditText
@@ -520,12 +377,8 @@
 
             <TextView
                 android:id="@+id/hole11Text"
-                android:padding="5dp"
-                android:text="11"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="11" />
 
 
             <EditText
@@ -548,12 +401,8 @@
 
             <TextView
                 android:id="@+id/hole12Text"
-                android:padding="5dp"
-                android:text="12"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="12" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -575,12 +424,8 @@
 
             <TextView
                 android:id="@+id/hole13Text"
-                android:padding="5dp"
                 android:text="13"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText" />
 
 
             <EditText
@@ -604,12 +449,8 @@
 
             <TextView
                 android:id="@+id/hole14Text"
-                android:padding="5dp"
-                android:text="14"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="14" />
 
             <EditText
                 style="@style/GolfEntry"
@@ -632,12 +473,8 @@
 
             <TextView
                 android:id="@+id/hole15Text"
-                android:padding="5dp"
-                android:text="15"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="15" />
 
 
             <EditText
@@ -662,12 +499,8 @@
 
             <TextView
                 android:id="@+id/hole16Text"
-                android:padding="5dp"
-                android:text="16"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="16" />
 
 
             <EditText
@@ -690,12 +523,8 @@
 
             <TextView
                 android:id="@+id/hole17Text"
-                android:padding="5dp"
-                android:text="17"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="17" />
 
 
             <EditText
@@ -719,12 +548,8 @@
 
             <TextView
                 android:id="@+id/hole18Text"
-                android:padding="5dp"
-                android:text="18"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="18" />
 
 
             <EditText
@@ -748,12 +573,8 @@
 
             <TextView
                 android:id="@+id/totalPlaceholder"
-                android:padding="5dp"
-                android:text="Σ"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/HoleText"
+                android:text="Σ" />
 
 
 
@@ -761,10 +582,11 @@
                 android:id="@+id/totalTextView"
                 android:padding="5dp"
                 android:text="180"
-                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@drawable/edit_text_border_two"
                 android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
 
 
         </TableRow>
@@ -798,13 +620,16 @@
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/AddPlayerButton"
             fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
             fab:fab_title="Add player"
             fab:fab_colorPressed="@color/white_pressed"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/RemovePlayerButton"
             fab:fab_colorNormal="@color/white"
             fab:fab_size="mini"
             fab:fab_title="Remove player"
@@ -818,6 +643,7 @@
             fab:fab_title="Finish game"
             fab:fab_colorPressed="@color/white_pressed"/>
 
+        <!--
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -825,6 +651,7 @@
             fab:fab_size="mini"
             fab:fab_title="Discard game"
             fab:fab_colorPressed="@color/white_pressed"/>
+            -->
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

@@ -6,6 +6,7 @@
         <item name="GolfEntryStyle">@style/GolfEntry</item>
         <item name="NameEntryStyle">@style/NameEntry</item>
         <item name="DividerVerticalStyle">@style/Divider_vertical</item>
+        <item name="TotalTextStyle">@style/TotalText</item>
     </style>
 
     <style name="Divider_vertical">
@@ -38,13 +39,14 @@
         <item name="android:digits">0123456789.</item>
         <item name="android:ellipsize">start</item>
         <item name="android:maxLines">1</item>
-        <item name="android:maxLength">2</item>
+        <item name="android:maxLength">1</item>
         <item name="android:gravity">center</item>
         <item name="android:hint">"    "</item>
         <item name="android:focusableInTouchMode">true</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">fill_parent</item>
+        <item name="android:imeOptions">actionNext</item>
     </style>
 
 
@@ -68,14 +70,21 @@
     <style name="HoleText">
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
-
-        <item name="android:background">@drawable/edit_text_border_two</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/edit_text_border_two</item>
     </style>
 
+    <style name="TotalText">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#707070</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/edit_text_border_two</item>
+    </style>
 
 
 </resources>
