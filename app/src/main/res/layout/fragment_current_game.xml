@@ -63,12 +63,17 @@
             android:layout_height="match_parent"
             android:background="@android:color/white" >
 
-            <TextView
+            <ImageView
                 android:id="@+id/playerGolfBallPlaceholder"
                 android:padding="5dp"
-                android:text=""
-                android:layout_gravity="center"
+                android:src="@drawable/golf_ball"
+                android:adjustViewBounds="true"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
+                android:gravity="center"
                 android:textSize="16sp"
+                android:background="@drawable/edit_text_border_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

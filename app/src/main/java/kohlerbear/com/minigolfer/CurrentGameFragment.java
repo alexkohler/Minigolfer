@@ -54,16 +54,11 @@ public class CurrentGameFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("x", 3);
+    public void onPause () {
+       //Because this is "long term" persistance, you will need to save your data here in a database or shared preferences -  perhaps a CURRENT_GAME table?
+        super.onPause();
     }
 
 
