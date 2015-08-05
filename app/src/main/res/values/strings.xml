@@ -10,6 +10,17 @@
 
     <!-- New game fragment strings -->
     <string name="new_game_fragment">New game fragment</string>
+    <string name="new_game_dialog_title">New game</string>
+    <string-array name="new_game_dialog_choices">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
 
     <!-- View game fragment strings-->
     <string name="view_game_fragment">View game fragment</string>

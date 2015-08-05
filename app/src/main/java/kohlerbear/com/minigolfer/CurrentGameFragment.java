@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
@@ -93,18 +95,16 @@ public class CurrentGameFragment extends Fragment {
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole16Row));
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole17Row));
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole18Row));
-        if (savedInstanceState != null ) {
+        /*if (savedInstanceState != null ) {
             if (savedInstanceState.containsKey("x")) {
                 int x = savedInstanceState.getInt("x");
                 Toast.makeText(getActivity(), x, Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
 
         m_rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
 
-//        FloatingActionButton addedOnce = new FloatingActionButton(getActivity());
-//        addedOnce.setTitle("Added once");
-//        rightLabels.addButton(addedOnce);
+
         FloatingActionButton addPlayerButton = (FloatingActionButton) myFragmentView.findViewById(R.id.AddPlayerButton);
         addPlayerButton.setOnClickListener(AddPlayerPressed());
 
@@ -114,6 +114,43 @@ public class CurrentGameFragment extends Fragment {
 
         //Let view know we have an options menu we wish to add
         //setHasOptionsMenu(true);
+
+
+        boolean databaseEmpty = true;//bootstrap until we get our sqlite database up and running
+        if (databaseEmpty) {
+            new MaterialDialog.Builder(getActivity())
+                    .title(R.string.new_game_dialog_title)
+                    .items(R.array.new_game_dialog_choices)
+                    .itemsCallback(new MaterialDialog.ListCallback() {
+                        @Override
+                        public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+
+                            new MaterialDialog.Builder(getActivity())
+                                    .title("Test")//TODO add to strings
+                                    .content("test")
+                                    .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
+                                    .input("googby", "prefill", new MaterialDialog.InputCallback() {
+                                        @Override
+                                        public void onInput(MaterialDialog dialog, CharSequence input) {
+                                            // Do something
+                                        }
+                                    })
+                                    .input("googby", "prefill", new MaterialDialog.InputCallback() {
+                                        @Override
+                                        public void onInput(MaterialDialog dialog, CharSequence input) {
+                                            // Do something
+                                        }
+                                    })
+                                    .show();
+                            Toast.makeText(getActivity(), "Which is " + which, Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .show();
+
+
+
+        }
+
 
         return myFragmentView;
     }

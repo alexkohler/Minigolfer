@@ -25,6 +25,7 @@ figure out this instance saving nonsense
 	While on the page of SQL, you will need a means of remembering previous games as well
 	Need to spec out CURRENT_GAME database
 		Simply table with max amount of players? Should this be fixed?
+	Yes, max players should be 10.
 
 prompt user on opening of how many players they wish to play with?
 	I think this will be dependent on the CURRENT_GAME database
@@ -37,3 +38,5 @@ push to open golf ball choice under each player's name
 	Different orientation quickaction depending on screen orientation?
 	imageview might want to go next to Name edittext?
 
+need to create multiple edittext dialog
+https://github.com/afollestad/material-dialogs/
