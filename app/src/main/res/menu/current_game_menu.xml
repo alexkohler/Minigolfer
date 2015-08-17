@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res-auto">
 
     <item
-        android1:title="hi"
-        android1:icon="@drawable/ic_delete"
-        android1:id="@+id/action_settings"
-        android:showAsAction="ifRoom"
+        android1:title="Remove player"
+        android1:id="@+id/action_remove_player"
+        android:showAsAction="never"
+        />
 
+    <item
+        android1:title="Discard Game"
+        android1:id="@+id/action_discard_game"
+        android:showAsAction="never"
         />
 
 </menu>

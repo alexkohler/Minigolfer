@@ -6,6 +6,11 @@
         android:dialogTitle="@string/pref_colorSchemeType"
         android:entries="@array/pref_colorSchemeTypes_entries"
         android:entryValues="@array/pref_colorSchemeTypes_values"
-        android:defaultValue="@string/pref_colorSchemeTypes_default" />
+        android:defaultValue="@string/pref_colorSchemeTypes_default" />3
+
+    <EditTextPreference
+        android:title="Default User"
+        android:key="defaultUser"
+        android:summary="First player added will always have this name"/>
 
 </PreferenceScreen>

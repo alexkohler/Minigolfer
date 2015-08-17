@@ -42,10 +42,6 @@
                 android:layout_height="wrap_content" />
 
 
-            <EditText
-                android:id="@+id/name1EditText"
-                android:text="Name 1"
-                style="@style/NameEntry" />
 
         </TableRow>
 
@@ -63,6 +59,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/white" >
 
+            <!--
             <ImageView
                 android:id="@+id/playerGolfBallPlaceholder"
                 android:padding="5dp"
@@ -76,12 +73,13 @@
                 android:background="@drawable/edit_text_border_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
+                -->
 
 
             <EditText
                 style="@style/GolfEntry"
                 android:id="@+id/sourceOfTruth"
+                android:enabled="false"
                 />
 
 
@@ -111,10 +109,6 @@
                 />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole1EditText" />
-
 
         </TableRow>
 
@@ -136,10 +130,6 @@
                 style="@style/HoleText"
                 android:text="2" />
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole2EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -158,10 +148,6 @@
                 android:id="@+id/hole3Text"
                 style="@style/HoleText"
                 android:text="3" />
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole3EditText" />
 
         </TableRow>
 
@@ -185,10 +171,6 @@
                 android:text="4" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole4EditText" />
-
         </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
@@ -208,10 +190,6 @@
                 style="@style/HoleText"
                 android:text="5" />
 
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole5EditText" />
 
         </TableRow>
 
@@ -233,10 +211,6 @@
                 style="@style/HoleText"
                 android:text="6" />
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole6EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -257,9 +231,6 @@
                 style="@style/HoleText"
                 android:text="7" />
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole7EditText" />
 
         </TableRow>
         <LinearLayout
@@ -282,10 +253,6 @@
                 android:text="8" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole8EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -306,10 +273,6 @@
                 android:text="9" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole9EditText" />
-
         </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
@@ -328,16 +291,6 @@
                 android:id="@+id/subtotalPlaceholder"
                 style="@style/HoleText"
                 android:text="Σ" />
-
-            <TextView
-                android:id="@+id/subtotalTextView1"
-                android:text="99"
-                android:gravity="center"
-                android:background="@drawable/edit_text_border_two"
-                android:textSize="16sp"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
 
         </TableRow>
 
@@ -361,10 +314,6 @@
                 android:text="10" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole10EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -386,10 +335,6 @@
                 android:text="11" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole11EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -408,10 +353,6 @@
                 android:id="@+id/hole12Text"
                 style="@style/HoleText"
                 android:text="12" />
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole12EditText" />
 
         </TableRow>
         <LinearLayout
@@ -433,10 +374,6 @@
                 style="@style/HoleText" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole13EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -457,10 +394,6 @@
                 style="@style/HoleText"
                 android:text="14" />
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole14EditText" />
-
         </TableRow>
 
         <LinearLayout
@@ -480,11 +413,6 @@
                 android:id="@+id/hole15Text"
                 style="@style/HoleText"
                 android:text="15" />
-
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole15EditText" />
 
 
         </TableRow>
@@ -508,10 +436,6 @@
                 android:text="16" />
 
 
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole16EditText" />
-
         </TableRow>
         <LinearLayout
             android:layout_width="match_parent"
@@ -531,10 +455,6 @@
                 style="@style/HoleText"
                 android:text="17" />
 
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole17EditText" />
 
         </TableRow>
 
@@ -556,10 +476,6 @@
                 style="@style/HoleText"
                 android:text="18" />
 
-
-            <EditText
-                style="@style/GolfEntry"
-                android:id="@+id/player1Hole18EditText" />
 
         </TableRow>
 
@@ -583,16 +499,6 @@
 
 
 
-            <TextView
-                android:id="@+id/totalTextView"
-                android:padding="5dp"
-                android:text="180"
-                android:gravity="center"
-                android:background="@drawable/edit_text_border_two"
-                android:textSize="16sp"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
-
 
         </TableRow>
 
@@ -610,7 +516,19 @@
 
     </ScrollView>
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
+
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/AddPlayerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        fab:fab_addButtonSize="mini"
+        fab:fab_colorNormal="@android:color/white"
+        fab:fab_plusIconColor="@android:color/black"
+        />
+
+
+    <!--<com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/right_labels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -648,17 +566,7 @@
             fab:fab_title="Finish game"
             fab:fab_colorPressed="@color/white_pressed"/>
 
-        <!--
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_size="mini"
-            fab:fab_title="Discard game"
-            fab:fab_colorPressed="@color/white_pressed"/>
-            -->
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </com.getbase.floatingactionbutton.FloatingActionsMenu> -->
 
 </FrameLayout>
 

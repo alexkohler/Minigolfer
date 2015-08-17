@@ -36,7 +36,11 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+
     }
+
+
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -95,6 +99,8 @@ public class MainActivity extends ActionBarActivity
         }
         return super.onCreateOptionsMenu(menu);
     }
+
+
 
     @Override
     protected void onSaveInstanceState (Bundle outState) {

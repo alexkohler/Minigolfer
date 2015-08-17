@@ -1,0 +1,82 @@
+    /*if (databaseEmpty) {
+        3    final MaterialDialog.Builder numberOfPlayersPrompt = new MaterialDialog.Builder(getActivity())
+                    .title("Number of Players")
+                    .positiveText("Next")
+                    .negativeText("Cancel")
+                    .items(R.array.new_game_dialog_choices);
+
+                    //add callback separately for embedded callback
+                    numberOfPlayersPrompt.itemsCallbackSingleChoice(0, new MaterialDialog.ListCallbackSingleChoice() {
+                        @Override
+                        public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+
+
+                            final int numberOfPlayers = which + 1;
+                            LayoutInflater inflater = getActivity().getLayoutInflater();
+                            final View myView = inflater.inflate(R.layout.dialog_customview, null);
+
+
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player1NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player2NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player3NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player4NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player5NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player6NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player7NameEditText));
+                            m_playerEditTexts.add((EditText) myView.findViewById(R.id.player8NameEditText));
+
+                            for (int i = 0; i < 8; i++) {
+                                EditText currentET = m_playerEditTexts.get(i);
+                                if (i < numberOfPlayers)
+                                    currentET.setVisibility(View.VISIBLE);
+                                else
+                                    currentET.setVisibility(View.GONE);
+                            }
+
+
+                            MaterialDialog.Builder nameOfPlayersPrompt = new MaterialDialog.Builder(getActivity())
+                                    .title(R.string.new_game_dialog_title)
+//                                        .customView(R.layout.dialog_customview, false)
+                                    .customView(myView, true)
+                                    .positiveText("Create")
+//                                    .neutralText("Back")
+                                    .negativeText("Cancel")
+                                            //items callback?
+                                    .callback(new MaterialDialog.ButtonCallback() {
+                                        @Override
+                                        public void onPositive(MaterialDialog dialog) {
+                                            //TODO add logic to default the player 1 hint
+                                            //TODO add logic to actual add the rows (iterate through your eddittext array)
+                                            //TODO golf ball color could also be retrieved here
+                                            //iterate through players
+                                            for (int i = 0; i < numberOfPlayers; i++) {
+                                                EditText currentET = m_playerEditTexts.get(i);
+                                                //if nothing is entered, use the hint
+                                                String playerName = currentET.getText().toString();
+                                                if (playerName.length() == 0) {
+                                                        playerName = currentET.getHint().toString();
+                                                }
+                                                addRow(playerName);
+                                            }
+                                            showToast("Positive!");
+                                        }
+
+//                                        @Override
+//                                        public void onNeutral(MaterialDialog dialog) {
+//                                            numberOfPlayersPrompt.show();
+//                                        }
+
+                                        @Override
+                                        public void onNegative(MaterialDialog dialog) {
+                                            showToast("Negative");
+
+                                        }
+                                    });
+                            nameOfPlayersPrompt.show();
+                            return true;
+                        }
+                    });
+
+            numberOfPlayersPrompt.show();
+
+        }*/
