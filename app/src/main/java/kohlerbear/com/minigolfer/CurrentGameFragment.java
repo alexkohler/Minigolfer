@@ -123,13 +123,13 @@ public class CurrentGameFragment extends Fragment {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());//getActivity().getSharedPreferences("defaultUser", Context.MODE_PRIVATE);
         final String defaultUserKey = "defaultUser";
         String defaultUser = prefs.getString(defaultUserKey, null);
+        //TODO figure out add row logic when it comes to this default user stuff (will have to play nice with database)
         if (defaultUser != null && defaultUser.trim().length() != 0)
         {
             showToast("Default user is " + defaultUser);
         }
         else //if we don't have a user stored in the sharedpreferences, hop on doing that
         {
-//            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
             new MaterialDialog.Builder(getActivity())
                     .title("Please enter your name")
 //                    .content(R.string.input_content)
