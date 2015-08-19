@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -36,6 +39,8 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
 
+import kohlerbear.com.minigolfer.db.DBHelper;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +56,8 @@ public class CurrentGameFragment extends Fragment {
     private ArrayList<TableRow> m_holeRows = new ArrayList<>();
 
     private ArrayList<EditText> m_playerEditTexts = new ArrayList<>();
+
+    SQLiteDatabase m_db; //TODO add (reliable) means to close database
 
 
     public static Fragment newInstance(/*String param1, String param2*/) {
@@ -153,9 +160,21 @@ public class CurrentGameFragment extends Fragment {
 
 
 
-
+        DBHelper helper = new DBHelper(getActivity());
+        m_db = helper.getWritableDatabase();
         boolean databaseEmpty = true;//bootstrap until we get our sqlite database up and running
-        //TODO shared preferences for username
+        m_db.execSQL("delete from " + DBHelper.TABLE_CURRENT_GAME);
+        String count = "SELECT count(*) FROM " + DBHelper.TABLE_CURRENT_GAME;
+        Cursor mcursor = m_db.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int numberOfEntries = mcursor.getInt(0);
+        if(numberOfEntries > 0)
+        showToast("We have some populating to do " + numberOfEntries);
+        else {
+            showToast("Db is empty");
+        }
+
+        //populate table
         //TODO SQL fun
         //TODO truncate game logic
 
@@ -332,7 +351,31 @@ public class CurrentGameFragment extends Fragment {
 
     void discardGamePressed()
     {
-        showToast("discard game stub");
+        new MaterialDialog.Builder(getActivity())
+                .title("Are you sure you wish to discard this game?")
+                .positiveText("Yes")
+                .negativeText("No")
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        //remove all current entries
+                        TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+                        int childCount = titleTableRow.getChildCount();
+                        showToast("There are " + childCount + " children");
+                        for (int i = 1; i < childCount; i++) {
+                            removeRow(i);
+                        }
+
+
+                        //clear our database
+                        m_db.execSQL("delete from " + DBHelper.TABLE_CURRENT_GAME);
+                    }
+                    @Override
+                    public void onNegative(MaterialDialog dialog) {
+                        dialog.cancel();
+                    }
+                }).show();
+
     }
 
     TextWatcher HoleEditTextChanged(final EditText currentEditText, final int childNum) {
