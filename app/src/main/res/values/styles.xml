@@ -36,7 +36,7 @@
     <style name="GolfEntry">
         <item name="android:inputType">numberDecimal</item>
         <item name="android:background">@drawable/edit_text_border_two</item>
-        <item name="android:digits">0123456789.</item>
+        <item name="android:digits">123456789</item>
         <item name="android:ellipsize">start</item>
         <item name="android:maxLines">1</item>
         <item name="android:maxLength">1</item>

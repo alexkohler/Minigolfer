@@ -21,15 +21,17 @@ Add floating button dependency - https://github.com/futuresimple/android-floatin
 
 8-18: got player and playerDAO and basics of DBHelper set up, next up is to actually run on device and use to save/release data. After that your previous_games table needs to go up, along with a prevGame object and DAO
 
-TODO:
+8-19: got current game database stuff hooked up and working pretty well. 
 
-figure out this instance saving nonsense 
-	If user goes to another page, onPause is called, you will need to save the data to a CURRENT_GAME SQLite database
-	While on the page of SQL, you will need a means of remembering previous games as well
-	Need to spec out CURRENT_GAME database
+8-20: fixed name updates, added finish button and sticky first column
 
+TODO
+	UI
+		(nice to have) golf ball button 
+		(nice to have) option to remove row
+	DB
+		add change listener to title edit texts - resolve issue of multiple names
 
-you want a sticky first hole column (separate tableview likely should do the trick
 
 push to open golf ball choice under each player's name
 	Different orientation quickaction depending on screen orientation?

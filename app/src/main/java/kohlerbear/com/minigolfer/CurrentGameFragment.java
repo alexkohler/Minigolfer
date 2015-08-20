@@ -1,11 +1,9 @@
 package kohlerbear.com.minigolfer;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -17,6 +15,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -34,12 +34,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.gc.materialdesign.views.ButtonRectangle;
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 import kohlerbear.com.minigolfer.db.DBHelper;
+import kohlerbear.com.minigolfer.db.Player;
+import kohlerbear.com.minigolfer.db.PlayerDAO;
 
 
 /**
@@ -52,12 +57,16 @@ public class CurrentGameFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     private TableLayout m_table;
+    private TableRow m_floatingTitleRow;
+    private View m_fragmentView;
 
     private ArrayList<TableRow> m_holeRows = new ArrayList<>();
 
     private ArrayList<EditText> m_playerEditTexts = new ArrayList<>();
 
     SQLiteDatabase m_db; //TODO add (reliable) means to close database
+    DBHelper m_helper;
+    PlayerDAO m_playerDAO;
 
 
     public static Fragment newInstance(/*String param1, String param2*/) {
@@ -89,7 +98,9 @@ public class CurrentGameFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
+        m_fragmentView = myFragmentView;
         m_table = (TableLayout) myFragmentView.findViewById(R.id.table);
+        m_floatingTitleRow = (TableRow) myFragmentView.findViewById(R.id.floatingTitleRow);
 
         //Initialization of tableRows
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole1Row));
@@ -112,16 +123,16 @@ public class CurrentGameFragment extends Fragment {
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole18Row));
 
 
-//        m_rightLabels = (FloatingActionsMenu) myFragmentView.findViewById(R.id.right_labels);
-
-
         FloatingActionButton addPlayerButton = (FloatingActionButton) myFragmentView.findViewById(R.id.AddPlayerButton);
         addPlayerButton.setOnClickListener(AddPlayerPressed());
 
-
-        //FloatingActionButton removePlayerButton = (FloatingActionButton) myFragmentView.findViewById(R.id.RemovePlayerButton);
-        //removePlayerButton.setOnClickListener(removePlayerPressed());
-
+        com.gc.materialdesign.views.ButtonRectangle finishGameButton = (com.gc.materialdesign.views.ButtonRectangle) myFragmentView.findViewById(R.id.finishGameButton);
+        finishGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showToast("Saving game to PREVIOUS_GAMES");
+            }
+        });
 
         //Let view know we have an options menu we wish to add
         setHasOptionsMenu(true);
@@ -130,13 +141,58 @@ public class CurrentGameFragment extends Fragment {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());//getActivity().getSharedPreferences("defaultUser", Context.MODE_PRIVATE);
         final String defaultUserKey = "defaultUser";
         String defaultUser = prefs.getString(defaultUserKey, null);
-        //TODO figure out add row logic when it comes to this default user stuff (will have to play nice with database)
-        if (defaultUser != null && defaultUser.trim().length() != 0)
+
+
+        m_helper = new DBHelper(getActivity());
+        m_db = m_helper.getWritableDatabase();
+        m_playerDAO = new PlayerDAO(getActivity());
+        String count = "SELECT count(*) FROM " + DBHelper.TABLE_CURRENT_GAME;
+        Cursor cursor = m_db.rawQuery(count, null);
+        cursor.moveToFirst();
+        int numberOfEntries = cursor.getInt(0);
+
+        if (defaultUser != null && defaultUser.trim().length() != 0 )
         {
-            showToast("Default user is " + defaultUser);
+            // if we have zero database entries, then we can add our default user to the card
+            if (numberOfEntries == 0) {
+                showToast("We need to add our default user " + defaultUser + " (DB empty)");
+                addRow(defaultUser);
+                m_playerDAO.insertPlayer(defaultUser);
+            }
+            // some further database fun
+            else { //otherwise we have more than zero entries
+//            showToast("We have some populating to do " + numberOfEntries);
+                List<Player> players = m_playerDAO.getAllPlayers();
+                for (Player player : players) {
+                    addRow(player.getPlayerName());
+
+                    // loop through our 18 holes and fill in any fields that our database has track of
+                    int holeScore = 0;
+                    Method currentHoleMethod;
+                    for (int i = 0; i < 18; i++) {
+                        try {
+                        currentHoleMethod = player.getClass().getMethod("getHole" + (i +1) + "score");
+                            holeScore = (int) currentHoleMethod.invoke(player);
+                        } catch (SecurityException e) {
+                            showToast("lolception");
+                        } catch (NoSuchMethodException e) {
+                            showToast("lolception");
+                        } catch (IllegalArgumentException e) {
+                        } catch (IllegalAccessException e) {
+                        } catch (InvocationTargetException e) {
+                        }
+                        if (holeScore != 0) {
+                            //since we just added a row, we know this added row will be at the end of titleTableRow
+                            TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+
+                            EditText currentHoleEntry = (EditText) m_holeRows.get(i).getChildAt(titleTableRow.getChildCount() - 1); // taking care of hole 1, grabbing child at (current) end
+                            currentHoleEntry.setText(String.valueOf(holeScore));
+                        }
+                    }
+                }
+            }
         }
-        else //if we don't have a user stored in the sharedpreferences, hop on doing that
-        {
+        else { //if we don't have a user stored in the sharedpreferences, hop on doing that
             new MaterialDialog.Builder(getActivity())
                     .title("Please enter your name")
 //                    .content(R.string.input_content)
@@ -155,38 +211,17 @@ public class CurrentGameFragment extends Fragment {
                             prefs.edit().putString(defaultUserKey, defaultUserInput).apply();
                         }
                     }).show();
-
         }
-
-
-
-        DBHelper helper = new DBHelper(getActivity());
-        m_db = helper.getWritableDatabase();
-        boolean databaseEmpty = true;//bootstrap until we get our sqlite database up and running
-        m_db.execSQL("delete from " + DBHelper.TABLE_CURRENT_GAME);
-        String count = "SELECT count(*) FROM " + DBHelper.TABLE_CURRENT_GAME;
-        Cursor mcursor = m_db.rawQuery(count, null);
-        mcursor.moveToFirst();
-        int numberOfEntries = mcursor.getInt(0);
-        if(numberOfEntries > 0)
-        showToast("We have some populating to do " + numberOfEntries);
-        else {
-            showToast("Db is empty");
-        }
-
-        //populate table
-        //TODO SQL fun
-        //TODO truncate game logic
-
-
-
         return myFragmentView;
     }
 
     public void removeRow(int childNumber) {
 
+        // handling UI
         TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+        String playerName = ((EditText) titleTableRow.getChildAt(childNumber)).getText().toString();
         titleTableRow.removeViewAt(childNumber);
+
         for (TableRow row : m_holeRows) {
             row.removeViewAt(childNumber);
         }
@@ -196,12 +231,19 @@ public class CurrentGameFragment extends Fragment {
 
         TableRow totalRow = (TableRow) m_table.findViewById(R.id.totalRow);
         totalRow.removeViewAt(childNumber);//removing name 2 --> removing child at 2 (bada boom)
+
+        // handling db
+        m_playerDAO.deletePlayer(playerName);
     }
 
     public void addRow(String playerName) {
 
-        //Add name to TitleTableRow
+        //******Managing UI******
+
+        //Add name to TitleTableRow (and our floating dummy row)
         TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+//        TableRow floatingTitleRow = (TableRow) findViewById(R.id.floatingTitleRow);
+
         EditText newEditText = new EditText(getActivity());//new EditText(getActivity(), null, R.attr.NameEntryStyle);
         newEditText.setText(playerName);
         newEditText.setPadding(5, 10, 5, 10);
@@ -214,8 +256,25 @@ public class CurrentGameFragment extends Fragment {
         newEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         newEditText.setLayoutParams(m_table.findViewById(R.id.holeTitleText).getLayoutParams());
         newEditText.setMinimumWidth(50);
+//        newEditText.setOnFocusChangeListener(NameEditTextChanged(newEditText));
         titleTableRow.addView(newEditText);
 
+
+        EditText floatingEditText = new EditText(getActivity());//new EditText(getActivity(), null, R.attr.NameEntryStyle);
+        floatingEditText.setText(playerName);
+        floatingEditText.setPadding(5, 10, 5, 10);
+        floatingEditText.setBackgroundDrawable(getResources().getDrawable(R.drawable.edit_text_border_green));
+        floatingEditText.setEllipsize(TextUtils.TruncateAt.START);
+        floatingEditText.setMaxLines(1);
+        floatingEditText.setGravity(Gravity.CENTER);
+        floatingEditText.setTypeface(floatingEditText.getTypeface(), Typeface.BOLD); // preserve fond
+        floatingEditText.setTextColor(Color.WHITE);
+        floatingEditText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+        floatingEditText.setLayoutParams(m_fragmentView.findViewById(R.id.dummyHoleTitleText).getLayoutParams());
+        floatingEditText.setMinimumWidth(50);
+
+
+        m_floatingTitleRow.addView(floatingEditText);
 
         //Add EditTexts to all of our TableRows
         final TableRow.LayoutParams lparams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.FILL_PARENT); // Width , height
@@ -228,7 +287,7 @@ public class CurrentGameFragment extends Fragment {
             golfEntry.setLayoutParams(lparams);
 
             //Add our listener to update our total
-            golfEntry.addTextChangedListener(HoleEditTextChanged(golfEntry, titleTableRow.getChildCount() - 1)); //will always be added to end
+            golfEntry.addTextChangedListener(HoleEditTextChanged(golfEntry, titleTableRow.getChildCount() - 1, i + 1)); //will always be added to end
 
             row.addView(golfEntry);
         }
@@ -249,6 +308,10 @@ public class CurrentGameFragment extends Fragment {
         //Layout parameters not respected, so we need to take care of them ourselves!
         totalText.setLayoutParams(lparams);
         totalRow.addView(totalText);
+
+
+
+
     }
 
     @Override
@@ -265,7 +328,6 @@ public class CurrentGameFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_remove_player:
                 removePlayerPressed();
-                showToast("remove player");
                 return true;
             case R.id.action_discard_game:
                 discardGamePressed();
@@ -284,8 +346,6 @@ public class CurrentGameFragment extends Fragment {
     //AddPlayerPressed - Prompts user with dialog to add a new player to the card.
     View.OnClickListener AddPlayerPressed() {
         return new View.OnClickListener() {
-
-
             @Override
             public void onClick(View view) {
                 //Create alert Dialog to get Name
@@ -303,7 +363,13 @@ public class CurrentGameFragment extends Fragment {
                                 if (newPlayer.length() == 0) {
                                     newPlayer = "New player";
                                 }
-                                addRow(newPlayer);
+                                // ensure we don't already have a player with this name
+                                if (!m_playerDAO.playerExists(newPlayer)) {
+                                    addRow(newPlayer);
+                                    m_playerDAO.insertPlayer(newPlayer);
+                                } else {
+                                    showToast("Player with name " + newPlayer + " already exists!");
+                                }
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -340,6 +406,7 @@ public class CurrentGameFragment extends Fragment {
                         .setPositiveButton("Remove Player", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 removeRow(spinner.getSelectedItemPosition() + 1); //We don't want to be able to remove our holes column
+
                             }
                         })
                         .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -361,15 +428,14 @@ public class CurrentGameFragment extends Fragment {
                         //remove all current entries
                         TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
                         int childCount = titleTableRow.getChildCount();
-                        showToast("There are " + childCount + " children");
                         for (int i = 1; i < childCount; i++) {
-                            removeRow(i);
+                            removeRow(1); // we will simply to continue to remove at 1, analogous to "pressing the delete key"
                         }
 
-
-                        //clear our database
+                        //despite deleting our players in the removeRow method, we still will clear our database
                         m_db.execSQL("delete from " + DBHelper.TABLE_CURRENT_GAME);
                     }
+
                     @Override
                     public void onNegative(MaterialDialog dialog) {
                         dialog.cancel();
@@ -378,32 +444,40 @@ public class CurrentGameFragment extends Fragment {
 
     }
 
-    TextWatcher HoleEditTextChanged(final EditText currentEditText, final int childNum) {
+    TextWatcher HoleEditTextChanged(final EditText currentEditText, final int childNum, final int holeNum) {
         return new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-
-                // you can call or do what you want with your EditText here
-                TableRow subTotalRow = (TableRow) m_table.findViewById(R.id.subtotalRow);
-                TableRow totalRow = (TableRow) m_table.findViewById(R.id.totalRow);
+                // if we aren't dealing with a deletion (that is, an empty string)
+                if (!s.toString().equals("")) {
+                    // you can call or do what you want with your EditText here
+                    TableRow subTotalRow = (TableRow) m_table.findViewById(R.id.subtotalRow);
+                    TableRow totalRow = (TableRow) m_table.findViewById(R.id.totalRow);
 //                    m_holeRows
-                int subTotal = 0;
-                int total = 0;
-                for (int i = 0; i < 18; i++) {
-                    TableRow row = m_holeRows.get(i);
-                    String currentFieldVal = ((EditText) row.getChildAt(childNum)).getText().toString();
-                    if (currentFieldVal.length() > 0) {
-                        int integerFieldVal = Integer.valueOf(currentFieldVal);
-                        if (i < 9) {
-                            subTotal += integerFieldVal;
+                    int subTotal = 0;
+                    int total = 0;
+                    //TODO an optimization would be to not iterate (you have the modified hole number)
+                    for (int i = 0; i < 18; i++) {
+                        TableRow row = m_holeRows.get(i);
+                        String currentFieldVal = ((EditText) row.getChildAt(childNum)).getText().toString();
+                        if (currentFieldVal.length() > 0) {
+                            // manage total + subtotal
+                            int integerFieldVal = Integer.valueOf(currentFieldVal);
+                            if (i < 9) {
+                                subTotal += integerFieldVal;
+                            }
+                            total += integerFieldVal;
                         }
-                        total += integerFieldVal;
-
                     }
-                }
-                ((TextView) subTotalRow.getChildAt(childNum)).setText(String.valueOf(subTotal));
-                ((TextView) totalRow.getChildAt(childNum)).setText(String.valueOf(total));
+                    // manage db
+                    TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+                    String player = ((EditText) titleTableRow.getChildAt(childNum)).getText().toString();
+//                    showToast(player + " modified his shit at hole " + holeNum + " to " + s.toString());
+                    m_playerDAO.updateHoleValue(player, holeNum, Integer.valueOf(s.toString()));
 
+                    ((TextView) subTotalRow.getChildAt(childNum)).setText(String.valueOf(subTotal));
+                    ((TextView) totalRow.getChildAt(childNum)).setText(String.valueOf(total));
+                }
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -412,9 +486,60 @@ public class CurrentGameFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         };
+    }
+
+
+    //TODO we have a bug here, how do we handle two users with same edit text names?
+    OnFocusChangeListener NameEditTextChanged(final EditText currentEditText) {
+        return new OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                /*
+                if (!s.toString().equals("")) {
+                    // manage db
+                    TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+                    String player = ((EditText) titleTableRow.getChildAt(childNum)).getText().toString();
+//                    showToast(player + " modified his shit at hole " + holeNum + " to " + s.toString());
+                    m_playerDAO.updateHoleValue(player, holeNum, Integer.valueOf(s.toString()));
+
+                }*/
+                    String currentPlayerName = currentEditText.getText().toString();
+//                    showToast("Changed name to " + currentPlayerName);
+                }
+            }
+        };
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        showToast("onStop");
+
+        // grab our players
+        List<Player> players = m_playerDAO.getAllPlayers();
+
+        // ensure no names have changed (comparing against titleTableRow)
+        TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+        for (int i = 1; i < titleTableRow.getChildCount(); i++) {
+            //title table row is our source of truth
+            String currentPlayerName = ((EditText) titleTableRow.getChildAt(i)).getText().toString();
+            Player currentPlayer = players.get(i - 1);
+            if (!currentPlayerName.equals(currentPlayer.getPlayerName())) {
+                m_playerDAO.updatePlayerName(currentPlayer.getPlayerId(), currentPlayerName);
+
+            }
+
+        }
+
 
 
     }
+
+
+
+
 
     private Toast mToast;
 

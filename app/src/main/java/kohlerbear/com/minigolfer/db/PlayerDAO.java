@@ -33,6 +33,16 @@ public class PlayerDAO {
             DBHelper.COLUMN_HOLE_18_SCORE
     };
 
+    //blank string is for zero placeholder so we can maintain more human indexing
+    private String[] mHoleColumns = { "", DBHelper.COLUMN_HOLE_1_SCORE, DBHelper.COLUMN_HOLE_2_SCORE,
+            DBHelper.COLUMN_HOLE_3_SCORE,DBHelper.COLUMN_HOLE_4_SCORE, DBHelper.COLUMN_HOLE_5_SCORE,
+            DBHelper.COLUMN_HOLE_6_SCORE,DBHelper.COLUMN_HOLE_7_SCORE, DBHelper.COLUMN_HOLE_8_SCORE,
+            DBHelper.COLUMN_HOLE_9_SCORE,DBHelper.COLUMN_HOLE_10_SCORE, DBHelper.COLUMN_HOLE_11_SCORE,
+            DBHelper.COLUMN_HOLE_12_SCORE,DBHelper.COLUMN_HOLE_13_SCORE, DBHelper.COLUMN_HOLE_14_SCORE,
+            DBHelper.COLUMN_HOLE_15_SCORE,DBHelper.COLUMN_HOLE_16_SCORE, DBHelper.COLUMN_HOLE_17_SCORE,
+            DBHelper.COLUMN_HOLE_18_SCORE
+    };
+
     public PlayerDAO(Context context) {
         mDbHelper = new DBHelper(context);
         this.mContext = context;
@@ -54,9 +64,9 @@ public class PlayerDAO {
         mDbHelper.close();
     }
 
-    public Player createPlayer(String playerName, String color, int hole1score, int hole2score, int hole3score, int hole4score, int hole5score,
-                                 int hole6score, int hole7score, int hole8score, int hole9score, int hole10score, int hole11score, int hole12score,
-                                 int hole13score, int hole14score, int hole15score, int hole16score, int hole17score, int hole18score) {
+    public void insertPlayer(String playerName, String color, int hole1score, int hole2score, int hole3score, int hole4score, int hole5score,
+                               int hole6score, int hole7score, int hole8score, int hole9score, int hole10score, int hole11score, int hole12score,
+                               int hole13score, int hole14score, int hole15score, int hole16score, int hole17score, int hole18score) {
         ContentValues values = new ContentValues();
         values.put(DBHelper.COLUMN_PLAYER_NAME, playerName);
         values.put(DBHelper.COLUMN_GOLFBALL_COLOR, color);
@@ -80,19 +90,44 @@ public class PlayerDAO {
         values.put(DBHelper.COLUMN_HOLE_17_SCORE, hole17score);
         values.put(DBHelper.COLUMN_HOLE_18_SCORE, hole18score);
 
-        long insertId = mDatabase.insert(DBHelper.TABLE_CURRENT_GAME, null, values);
-        Cursor cursor = mDatabase.query(DBHelper.TABLE_CURRENT_GAME,
-                mAllColumns, DBHelper.COLUMN_PLAYER_ID + " = " + insertId, null, null, null, null);
-        cursor.moveToFirst();
-        Player newPlayer = cursorToPlayer(cursor);
-        cursor.close();
-        return newPlayer;
+//        long insertId = mDatabase.insert(DBHelper.TABLE_CURRENT_GAME, null, values);
+//        Cursor cursor = mDatabase.query(DBHelper.TABLE_CURRENT_GAME,
+//                mAllColumns, DBHelper.COLUMN_PLAYER_ID + " = " + insertId, null, null, null, null);
+//        cursor.moveToFirst();
+//        Player newPlayer = cursorToPlayer(cursor);
+//        cursor.close();
+//        return newPlayer;
     }
 
-    public void deletePlayer(Player player) {
-        long id = player.getPlayerId();
-        System.out.println("the deleted employee has the id: " + id);
-        mDatabase.delete(DBHelper.TABLE_CURRENT_GAME, DBHelper.COLUMN_PLAYER_ID + " = " + id, null);
+    //TODO golf ball color stuff?
+    public void insertPlayer(String playerName) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.COLUMN_PLAYER_NAME, playerName);
+
+        long insertId = mDatabase.insert(DBHelper.TABLE_CURRENT_GAME, null, values);
+//        Cursor cursor = mDatabase.query(DBHelper.TABLE_CURRENT_GAME,
+//                mAllColumns, DBHelper.COLUMN_PLAYER_ID + " = " + insertId, null, null, null, null);
+//        cursor.moveToFirst();
+//        Player newPlayer = cursorToPlayer(cursor);
+//        cursor.close();
+//        return newPlayer;
+    }
+
+    public void updateHoleValue(String playerName, int holeNumber, int stroke) {
+        ContentValues values = new ContentValues();
+        values.put(mHoleColumns[holeNumber], stroke);
+        mDatabase.update(DBHelper.TABLE_CURRENT_GAME, values, DBHelper.COLUMN_PLAYER_NAME + "=?", new String[]{playerName});//table values whereclause whereargs
+    }
+
+    public void updatePlayerName(long playerID, String newName) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.COLUMN_PLAYER_NAME, newName);
+        mDatabase.update(DBHelper.TABLE_CURRENT_GAME, values, DBHelper.COLUMN_PLAYER_ID + "=?", new String[]{String.valueOf(playerID)});//table values whereclause whereargs
+    }
+
+
+    public void deletePlayer(String playerName) {
+        mDatabase.delete(DBHelper.TABLE_CURRENT_GAME, DBHelper.COLUMN_PLAYER_NAME + "=?", new String[]{playerName});
     }
 
     public List<Player> getAllPlayers() {
@@ -110,6 +145,12 @@ public class PlayerDAO {
         // make sure to close the cursor
         cursor.close();
         return listPlayers;
+    }
+
+    public boolean playerExists (String playerName) {
+        Cursor cursor = mDatabase.query(DBHelper.TABLE_CURRENT_GAME,
+                mAllColumns, DBHelper.COLUMN_PLAYER_NAME + " = '" + playerName + "'", null, null, null, null);
+        return !(cursor.getCount() == 0); //if getCount is zero, then the player DOESN'T exist
     }
 
     //TODO additional methods needed?
