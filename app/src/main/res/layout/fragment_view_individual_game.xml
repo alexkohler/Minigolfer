@@ -1,0 +1,542 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kohlerbear.com.minigolfer.ViewIndividualGameFragment">
+
+    <LinearLayout
+        android:id="@+id/dummyContainer"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/floatingTitleRow"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="#009688" >
+
+            <TextView
+                android:id="@+id/dummyHoleTitleText"
+                android:text="Hole"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/name_border"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- TODO: Update blank fragment layout -->
+                    <TableLayout
+                        android:id="@+id/table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <!-- removed stretch columns attribute -->
+
+                        <TableRow
+                            android:id="@+id/titleTableRow"
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:visibility="invisible"
+                            android:background="#009688" >
+
+                            <TextView
+                                android:id="@+id/holeTitleText"
+                                android:text="Hole"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="10dp"
+                                android:background="@drawable/name_border"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp" />
+
+
+                        </TableRow>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+
+                        <TableRow
+                            android:id="@+id/playerGolfBallRow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <!--
+                            <ImageView
+                                android:id="@+id/playerGolfBallPlaceholder"
+                                android:padding="5dp"
+                                android:src="@drawable/golf_ball"
+                                android:adjustViewBounds="true"
+                                android:maxWidth="42dp"
+                                android:maxHeight="42dp"
+                                android:scaleType="fitCenter"
+                                android:gravity="center"
+                                android:textSize="16sp"
+                                android:background="@drawable/edit_text_border_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                                -->
+
+
+                            <EditText
+                                style="@style/GolfEntry"
+                                android:id="@+id/sourceOfTruth"
+                                android:enabled="false"
+                                />
+
+
+
+
+                        </TableRow>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- hole 1 ( beginning of holes)  -->
+                        <TableRow
+                            android:id="@+id/hole1Row"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+
+                            <TextView
+                                android:id="@+id/hole1Text"
+                                style="@style/HoleText"
+                                android:text="1"
+                                />
+
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- hole 2 -->
+                        <TableRow
+                            android:id="@+id/hole2Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole2Text"
+                                style="@style/HoleText"
+                                android:text="2" />
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+                        <!-- Hole 3 -->
+                        <TableRow
+                            android:id="@+id/hole3Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole3Text"
+                                style="@style/HoleText"
+                                android:text="3" />
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+
+                        <!-- Hole 4 -->
+                        <TableRow
+                            android:id="@+id/hole4Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole4Text"
+                                style="@style/HoleText"
+                                android:text="4" />
+
+
+                        </TableRow>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 5 -->
+                        <TableRow
+                            android:id="@+id/hole5Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole5Text"
+                                style="@style/HoleText"
+                                android:text="5" />
+
+
+                        </TableRow>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+                        <!-- Hole 6 -->
+                        <TableRow
+                            android:id="@+id/hole6Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole6Text"
+                                style="@style/HoleText"
+                                android:text="6" />
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 6 -->
+                        <TableRow
+                            android:id="@+id/hole7Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole7Text"
+                                style="@style/HoleText"
+                                android:text="7" />
+
+
+                        </TableRow>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+
+                        <!-- Hole 7 -->
+                        <TableRow
+                            android:id="@+id/hole8Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole8Text"
+                                style="@style/HoleText"
+                                android:text="8" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+                        <!-- Hole 9 -->
+                        <TableRow
+                            android:id="@+id/hole9Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole9Text"
+                                style="@style/HoleText"
+                                android:text="9" />
+
+
+                        </TableRow>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- subtotal row -->
+                        <TableRow
+                            android:id="@+id/subtotalRow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/subtotalPlaceholder"
+                                style="@style/HoleText"
+                                android:text="Σ" />
+
+                        </TableRow>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 10 -->
+                        <TableRow
+                            android:id="@+id/hole10Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole10Text"
+                                style="@style/HoleText"
+                                android:text="10" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 11 -->
+                        <TableRow
+                            android:id="@+id/hole11Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole11Text"
+                                style="@style/HoleText"
+                                android:text="11" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+                        <!-- Hole 12 -->
+                        <TableRow
+                            android:id="@+id/hole12Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole12Text"
+                                style="@style/HoleText"
+                                android:text="12" />
+
+                        </TableRow>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 13 -->
+                        <TableRow
+                            android:id="@+id/hole13Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole13Text"
+                                android:text="13"
+                                style="@style/HoleText" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 14 -->
+                        <TableRow
+                            android:id="@+id/hole14Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole14Text"
+                                style="@style/HoleText"
+                                android:text="14" />
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 15 -->
+                        <TableRow
+                            android:id="@+id/hole15Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole15Text"
+                                style="@style/HoleText"
+                                android:text="15" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 16 -->
+                        <TableRow
+                            android:id="@+id/hole16Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole16Text"
+                                style="@style/HoleText"
+                                android:text="16" />
+
+
+                        </TableRow>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 17 -->
+                        <TableRow
+                            android:id="@+id/hole17Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole17Text"
+                                style="@style/HoleText"
+                                android:text="17" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- Hole 18 -->
+                        <TableRow
+                            android:id="@+id/hole18Row"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/hole18Text"
+                                style="@style/HoleText"
+                                android:text="18" />
+
+
+                        </TableRow>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp" >
+                            <View style="@style/Divider_horizontal" />
+                        </LinearLayout>
+
+                        <!-- total row -->
+                        <TableRow
+                            android:id="@+id/totalRow"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white" >
+
+                            <TextView
+                                android:id="@+id/totalPlaceholder"
+                                style="@style/HoleText"
+                                android:text="Σ" />
+
+
+
+
+                        </TableRow>
+
+
+                    </TableLayout>
+                    <!-- Define our floating button -->
+
+                </HorizontalScrollView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

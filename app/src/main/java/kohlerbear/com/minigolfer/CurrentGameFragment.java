@@ -57,7 +57,6 @@ public class CurrentGameFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     private TableLayout m_table;
-    private TableRow m_floatingTitleRow;
     private View m_fragmentView;
 
     private ArrayList<TableRow> m_holeRows = new ArrayList<>();
@@ -66,29 +65,16 @@ public class CurrentGameFragment extends Fragment {
 
     SQLiteDatabase m_db; //TODO add (reliable) means to close database
     DBHelper m_helper;
-    PlayerDAO m_playerDAO;
+    PlayerDAO m_playerDAO; //TODO add (reliable) means to close database (DAO opens a connection too)
 
 
     public static Fragment newInstance(/*String param1, String param2*/) {
-        CurrentGameFragment fragment = new CurrentGameFragment();
-        Bundle args = new Bundle();
-
-
-        fragment.setArguments(args);
-        return fragment;
+        return new CurrentGameFragment();
     }
 
     public CurrentGameFragment() {
         // Required empty public constructor
     }
-
-
-    @Override
-    public void onPause() {
-        //Because this is "long term" persistance, you will need to save your data here in a database or shared preferences -  perhaps a CURRENT_GAME table?
-        super.onPause();
-    }
-
 
     /* To solve your edit texts getting changed on orientation change.. You will need to do this with a list of edittexts that gets
     updated/initialized as you input your number of players/add additional players
@@ -100,7 +86,6 @@ public class CurrentGameFragment extends Fragment {
         View myFragmentView = inflater.inflate(R.layout.fragment_current_game, container, false);
         m_fragmentView = myFragmentView;
         m_table = (TableLayout) myFragmentView.findViewById(R.id.table);
-        m_floatingTitleRow = (TableRow) myFragmentView.findViewById(R.id.floatingTitleRow);
 
         //Initialization of tableRows
         m_holeRows.add((TableRow) myFragmentView.findViewById(R.id.hole1Row));
@@ -127,12 +112,7 @@ public class CurrentGameFragment extends Fragment {
         addPlayerButton.setOnClickListener(AddPlayerPressed());
 
         com.gc.materialdesign.views.ButtonRectangle finishGameButton = (com.gc.materialdesign.views.ButtonRectangle) myFragmentView.findViewById(R.id.finishGameButton);
-        finishGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showToast("Saving game to PREVIOUS_GAMES");
-            }
-        });
+        finishGameButton.setOnClickListener(finishButtonPressed());
 
         //Let view know we have an options menu we wish to add
         setHasOptionsMenu(true);
@@ -159,9 +139,8 @@ public class CurrentGameFragment extends Fragment {
                 addRow(defaultUser);
                 m_playerDAO.insertPlayer(defaultUser);
             }
-            // some further database fun
-            else { //otherwise we have more than zero entries
-//            showToast("We have some populating to do " + numberOfEntries);
+            // otherwise we have more than zero entries, and we should use this info to populate our card
+            else {
                 List<Player> players = m_playerDAO.getAllPlayers();
                 for (Player player : players) {
                     addRow(player.getPlayerName());
@@ -174,9 +153,7 @@ public class CurrentGameFragment extends Fragment {
                         currentHoleMethod = player.getClass().getMethod("getHole" + (i +1) + "score");
                             holeScore = (int) currentHoleMethod.invoke(player);
                         } catch (SecurityException e) {
-                            showToast("lolception");
                         } catch (NoSuchMethodException e) {
-                            showToast("lolception");
                         } catch (IllegalArgumentException e) {
                         } catch (IllegalAccessException e) {
                         } catch (InvocationTargetException e) {
@@ -237,12 +214,11 @@ public class CurrentGameFragment extends Fragment {
     }
 
     public void addRow(String playerName) {
-
         //******Managing UI******
 
         //Add name to TitleTableRow (and our floating dummy row)
         TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
-//        TableRow floatingTitleRow = (TableRow) findViewById(R.id.floatingTitleRow);
+        TableRow floatingTitleRow = (TableRow) m_fragmentView.findViewById(R.id.floatingTitleRow);
 
         EditText newEditText = new EditText(getActivity());//new EditText(getActivity(), null, R.attr.NameEntryStyle);
         newEditText.setText(playerName);
@@ -274,7 +250,7 @@ public class CurrentGameFragment extends Fragment {
         floatingEditText.setMinimumWidth(50);
 
 
-        m_floatingTitleRow.addView(floatingEditText);
+        floatingTitleRow.addView(floatingEditText);
 
         //Add EditTexts to all of our TableRows
         final TableRow.LayoutParams lparams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.FILL_PARENT); // Width , height
@@ -308,10 +284,6 @@ public class CurrentGameFragment extends Fragment {
         //Layout parameters not respected, so we need to take care of them ourselves!
         totalText.setLayoutParams(lparams);
         totalRow.addView(totalText);
-
-
-
-
     }
 
     @Override
@@ -335,11 +307,6 @@ public class CurrentGameFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     //On Click Listeners
@@ -441,7 +408,30 @@ public class CurrentGameFragment extends Fragment {
                         dialog.cancel();
                     }
                 }).show();
+    }
 
+    View.OnClickListener finishButtonPressed() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new MaterialDialog.Builder(getActivity())
+                        .title("Are you sure you're finished?")
+                        .positiveText("Yes")
+                        .negativeText("No")
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                //time to add our game to PREVIOUS_GAMES11
+
+                            }
+
+                            @Override
+                            public void onNegative(MaterialDialog dialog) {
+                                dialog.cancel();
+                            }
+                        }).show();
+            }
+        };
     }
 
     TextWatcher HoleEditTextChanged(final EditText currentEditText, final int childNum, final int holeNum) {
@@ -488,58 +478,24 @@ public class CurrentGameFragment extends Fragment {
         };
     }
 
-
-    //TODO we have a bug here, how do we handle two users with same edit text names?
-    OnFocusChangeListener NameEditTextChanged(final EditText currentEditText) {
-        return new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                /*
-                if (!s.toString().equals("")) {
-                    // manage db
-                    TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
-                    String player = ((EditText) titleTableRow.getChildAt(childNum)).getText().toString();
-//                    showToast(player + " modified his shit at hole " + holeNum + " to " + s.toString());
-                    m_playerDAO.updateHoleValue(player, holeNum, Integer.valueOf(s.toString()));
-
-                }*/
-                    String currentPlayerName = currentEditText.getText().toString();
-//                    showToast("Changed name to " + currentPlayerName);
-                }
-            }
-        };
-
-    }
-
     @Override
     public void onStop() {
         super.onStop();
-        showToast("onStop");
 
         // grab our players
         List<Player> players = m_playerDAO.getAllPlayers();
 
         // ensure no names have changed (comparing against titleTableRow)
-        TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+        TableRow titleTableRow = (TableRow) m_fragmentView.findViewById(R.id.floatingTitleRow);
         for (int i = 1; i < titleTableRow.getChildCount(); i++) {
             //title table row is our source of truth
             String currentPlayerName = ((EditText) titleTableRow.getChildAt(i)).getText().toString();
             Player currentPlayer = players.get(i - 1);
             if (!currentPlayerName.equals(currentPlayer.getPlayerName())) {
                 m_playerDAO.updatePlayerName(currentPlayer.getPlayerId(), currentPlayerName);
-
             }
-
         }
-
-
-
     }
-
-
-
-
 
     private Toast mToast;
 

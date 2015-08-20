@@ -16,31 +16,31 @@ import java.util.List;
 
 public class PlayerDAO {
 
-    public static final String TAG = "EmployeeDAO";
+    public static final String TAG = "playerDAO";
 
     private Context mContext;
 
     // Database fields
     private SQLiteDatabase mDatabase;
     private DBHelper mDbHelper;
-    private String[] mAllColumns = { DBHelper.COLUMN_PLAYER_ID, DBHelper.COLUMN_PLAYER_NAME,
-            DBHelper.COLUMN_GOLFBALL_COLOR, DBHelper.COLUMN_HOLE_1_SCORE, DBHelper.COLUMN_HOLE_2_SCORE,
-            DBHelper.COLUMN_HOLE_3_SCORE,DBHelper.COLUMN_HOLE_4_SCORE, DBHelper.COLUMN_HOLE_5_SCORE,
-            DBHelper.COLUMN_HOLE_6_SCORE,DBHelper.COLUMN_HOLE_7_SCORE, DBHelper.COLUMN_HOLE_8_SCORE,
-            DBHelper.COLUMN_HOLE_9_SCORE,DBHelper.COLUMN_HOLE_10_SCORE, DBHelper.COLUMN_HOLE_11_SCORE,
-            DBHelper.COLUMN_HOLE_12_SCORE,DBHelper.COLUMN_HOLE_13_SCORE, DBHelper.COLUMN_HOLE_14_SCORE,
-            DBHelper.COLUMN_HOLE_15_SCORE,DBHelper.COLUMN_HOLE_16_SCORE, DBHelper.COLUMN_HOLE_17_SCORE,
-            DBHelper.COLUMN_HOLE_18_SCORE
+    private String[] mAllColumns = {
+            DBHelper.COLUMN_PLAYER_ID, DBHelper.COLUMN_PLAYER_NAME, DBHelper.COLUMN_GOLFBALL_COLOR,
+            DBHelper.COLUMN_HOLE_1_SCORE,DBHelper.COLUMN_HOLE_2_SCORE,DBHelper.COLUMN_HOLE_3_SCORE,
+            DBHelper.COLUMN_HOLE_4_SCORE,DBHelper.COLUMN_HOLE_5_SCORE,DBHelper.COLUMN_HOLE_6_SCORE,
+            DBHelper.COLUMN_HOLE_7_SCORE,DBHelper.COLUMN_HOLE_8_SCORE,DBHelper.COLUMN_HOLE_9_SCORE,
+            DBHelper.COLUMN_HOLE_10_SCORE,DBHelper.COLUMN_HOLE_11_SCORE,DBHelper.COLUMN_HOLE_12_SCORE,
+            DBHelper.COLUMN_HOLE_13_SCORE,DBHelper.COLUMN_HOLE_14_SCORE,DBHelper.COLUMN_HOLE_15_SCORE,
+            DBHelper.COLUMN_HOLE_16_SCORE,DBHelper.COLUMN_HOLE_17_SCORE,DBHelper.COLUMN_HOLE_18_SCORE
     };
 
     //blank string is for zero placeholder so we can maintain more human indexing
-    private String[] mHoleColumns = { "", DBHelper.COLUMN_HOLE_1_SCORE, DBHelper.COLUMN_HOLE_2_SCORE,
-            DBHelper.COLUMN_HOLE_3_SCORE,DBHelper.COLUMN_HOLE_4_SCORE, DBHelper.COLUMN_HOLE_5_SCORE,
-            DBHelper.COLUMN_HOLE_6_SCORE,DBHelper.COLUMN_HOLE_7_SCORE, DBHelper.COLUMN_HOLE_8_SCORE,
-            DBHelper.COLUMN_HOLE_9_SCORE,DBHelper.COLUMN_HOLE_10_SCORE, DBHelper.COLUMN_HOLE_11_SCORE,
-            DBHelper.COLUMN_HOLE_12_SCORE,DBHelper.COLUMN_HOLE_13_SCORE, DBHelper.COLUMN_HOLE_14_SCORE,
-            DBHelper.COLUMN_HOLE_15_SCORE,DBHelper.COLUMN_HOLE_16_SCORE, DBHelper.COLUMN_HOLE_17_SCORE,
-            DBHelper.COLUMN_HOLE_18_SCORE
+    private String[] mHoleColumns = { "",
+            DBHelper.COLUMN_HOLE_1_SCORE, DBHelper.COLUMN_HOLE_2_SCORE,DBHelper.COLUMN_HOLE_3_SCORE,
+            DBHelper.COLUMN_HOLE_4_SCORE, DBHelper.COLUMN_HOLE_5_SCORE,DBHelper.COLUMN_HOLE_6_SCORE,
+            DBHelper.COLUMN_HOLE_7_SCORE, DBHelper.COLUMN_HOLE_8_SCORE,DBHelper.COLUMN_HOLE_9_SCORE,
+            DBHelper.COLUMN_HOLE_10_SCORE, DBHelper.COLUMN_HOLE_11_SCORE,DBHelper.COLUMN_HOLE_12_SCORE,
+            DBHelper.COLUMN_HOLE_13_SCORE, DBHelper.COLUMN_HOLE_14_SCORE,DBHelper.COLUMN_HOLE_15_SCORE,
+            DBHelper.COLUMN_HOLE_16_SCORE, DBHelper.COLUMN_HOLE_17_SCORE,DBHelper.COLUMN_HOLE_18_SCORE
     };
 
     public PlayerDAO(Context context) {
@@ -153,8 +153,6 @@ public class PlayerDAO {
         return !(cursor.getCount() == 0); //if getCount is zero, then the player DOESN'T exist
     }
 
-    //TODO additional methods needed?
-    //TODO do you need null checks here? or is this handled at db levell?
     private Player cursorToPlayer(Cursor cursor) {
         Player player = new Player();
         player.setPlayerId(cursor.getLong(0));
@@ -178,7 +176,6 @@ public class PlayerDAO {
         player.setHole16score(cursor.getInt(18));
         player.setHole17score(cursor.getInt(19));
         player.setHole18score(cursor.getInt(20));
-
         return player;
     }
 

@@ -10,7 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String TAG = "DBHelper";
 
-    // columns of the companies table
+    // columns of the current_game table
     public static final String TABLE_CURRENT_GAME   = "current_game";
     public static final String COLUMN_PLAYER_ID     = "player_id";
     public static final String COLUMN_PLAYER_NAME   = "player_name";
@@ -34,39 +34,50 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HOLE_17_SCORE = "hole17score";
     public static final String COLUMN_HOLE_18_SCORE = "hole18score";
 
-    /*
-    public static final String COLUMN_COMPANY_PHONE_NUMBER = "phone_number";
 
-    // columns of the employees table
-    public static final String TABLE_EMPLOYEES = "employees";
-    public static final String COLUMN_EMPLOYE_ID = COLUMN_PLAYER_ID;
-    public static final String COLUMN_EMPLOYE_FIRST_NAME = "first_name";
-    public static final String COLUMN_EMPLOYE_LAST_NAME = "last_name";
-    public static final String COLUMN_EMPLOYE_ADDRESS = COLUMN_GOLFBALL_COLOR;
-    public static final String COLUMN_EMPLOYE_EMAIL = "email";
-    public static final String COLUMN_EMPLOYE_PHONE_NUMBER = COLUMN_COMPANY_PHONE_NUMBER;
-    public static final String COLUMN_EMPLOYE_SALARY = "salary";
-    public static final String COLUMN_EMPLOYE_COMPANY_ID = "company_id";
-    */
+
+    // columns of the previous_game table
+    public static final String TABLE_PREVIOUS_GAMES = "previous_games";
+    public static final String COLUMN_GAME_ID = "game_id";
+    public static final String COLUMN_GAME_LOC = "game_location";
+//    public static final String COLUMN_PLAYER_ID = COLUMN_PLAYER_ID;
+//    public static final String COLUMN_PLAYER_NAME   = "player_name";
+//    ...holes 1-18 - winner can be ascertained from these scores
+
+
+
     private static final String DATABASE_NAME = "minigolfer.db";
     private static final int DATABASE_VERSION = 1;
 
-    /*
-    // SQL statement of the employees table creation
-    private static final String SQL_CREATE_TABLE_EMPLOYEES = "CREATE TABLE " + TABLE_EMPLOYEES + "("
-            + COLUMN_EMPLOYE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_EMPLOYE_FIRST_NAME + " TEXT NOT NULL, "
-            + COLUMN_EMPLOYE_LAST_NAME + " TEXT NOT NULL, "
-            + COLUMN_EMPLOYE_ADDRESS + " TEXT NOT NULL, "
-            + COLUMN_EMPLOYE_EMAIL + " TEXT NOT NULL, "
-            + COLUMN_EMPLOYE_PHONE_NUMBER + " TEXT NOT NULL, "
-            + COLUMN_EMPLOYE_SALARY + " REAL NOT NULL, "
-            + COLUMN_EMPLOYE_COMPANY_ID + " INTEGER NOT NULL "
+    // SQL statement of the previous_game table creation
+    private static final String SQL_CREATE_TABLE_PREVIOUS_GAME = "CREATE TABLE " + TABLE_CURRENT_GAME + "("
+            + COLUMN_GAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_GAME_LOC + " TEXT, "
+            + COLUMN_PLAYER_ID + " INTEGER, "
+            + COLUMN_PLAYER_NAME + " TEXT NOT NULL, "
+            + COLUMN_GOLFBALL_COLOR + " TEXT, " //whether or not this will actually be implemented is still up in the air
+            + COLUMN_HOLE_1_SCORE + " INTEGER, "
+            + COLUMN_HOLE_2_SCORE + " INTEGER, "
+            + COLUMN_HOLE_3_SCORE + " INTEGER, "
+            + COLUMN_HOLE_4_SCORE + " INTEGER, "
+            + COLUMN_HOLE_5_SCORE + " INTEGER, "
+            + COLUMN_HOLE_6_SCORE + " INTEGER, "
+            + COLUMN_HOLE_7_SCORE + " INTEGER, "
+            + COLUMN_HOLE_8_SCORE + " INTEGER, "
+            + COLUMN_HOLE_9_SCORE + " INTEGER, "
+            + COLUMN_HOLE_10_SCORE + " INTEGER, "
+            + COLUMN_HOLE_11_SCORE + " INTEGER, "
+            + COLUMN_HOLE_12_SCORE + " INTEGER, "
+            + COLUMN_HOLE_13_SCORE + " INTEGER, "
+            + COLUMN_HOLE_14_SCORE + " INTEGER, "
+            + COLUMN_HOLE_15_SCORE + " INTEGER, "
+            + COLUMN_HOLE_16_SCORE + " INTEGER, "
+            + COLUMN_HOLE_17_SCORE + " INTEGER, "
+            + COLUMN_HOLE_18_SCORE + " INTEGER "
             +");";
-     */
 
-    // SQL statement of the companies table creation
-    private static final String SQL_CREATE_TABLE_COMPANIES = "CREATE TABLE " + TABLE_CURRENT_GAME + "("
+    // SQL statement of the current_game table creation
+    private static final String SQL_CREATE_TABLE_CURRENT_GAME = "CREATE TABLE " + TABLE_CURRENT_GAME + "("
             + COLUMN_PLAYER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_PLAYER_NAME + " TEXT NOT NULL, "
             + COLUMN_GOLFBALL_COLOR + " TEXT, "
@@ -96,8 +107,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(SQL_CREATE_TABLE_COMPANIES);
-        //database.execSQL(SQL_CREATE_TABLE_EMPLOYEES);
+        database.execSQL(SQL_CREATE_TABLE_CURRENT_GAME);
+        database.execSQL(SQL_CREATE_TABLE_PREVIOUS_GAME);
     }
 
     @Override
@@ -105,7 +116,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.w(TAG,
                 "Upgrading the database from version " + oldVersion + " to " + newVersion);
         // clear all data
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_EMPLOYEES);
+        //TODO note that this upgrade will clear user data!! Refactor this to NOT drop tables and rather modify them if possible (or needed at all)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PREVIOUS_GAMES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CURRENT_GAME);
 
         // recreate the tables
