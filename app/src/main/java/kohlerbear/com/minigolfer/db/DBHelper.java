@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // SQL statement of the previous_game table creation
-    private static final String SQL_CREATE_TABLE_PREVIOUS_GAME = "CREATE TABLE " + TABLE_CURRENT_GAME + "("
+    private static final String SQL_CREATE_TABLE_PREVIOUS_GAME = "CREATE TABLE " + TABLE_PREVIOUS_GAMES + "("
             + COLUMN_GAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_GAME_LOC + " TEXT, "
             + COLUMN_PLAYER_ID + " INTEGER, "

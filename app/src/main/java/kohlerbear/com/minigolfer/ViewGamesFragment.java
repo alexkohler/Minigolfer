@@ -1,27 +1,25 @@
 package kohlerbear.com.minigolfer;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.util.Attributes;
 
-import kohlerbear.com.minigolfer.listview.SwipeDismissListViewTouchListener;
-import kohlerbear.com.minigolfer.listview.SwipeDismissTouchListener;
+import kohlerbear.com.minigolfer.listview.ListViewAdapter;
 
 
 /**
@@ -29,7 +27,7 @@ import kohlerbear.com.minigolfer.listview.SwipeDismissTouchListener;
  * Use the {@link ViewGamesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewGamesFragment extends ListFragment {
+public class ViewGamesFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,7 +39,9 @@ public class ViewGamesFragment extends ListFragment {
 
 
     private View myFragmentView;
-
+    private ListView mListView;
+    private ListViewAdapter mAdapter;
+    private Context mContext = getActivity();
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -67,51 +67,69 @@ public class ViewGamesFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ListView listView = getListView();
-        //TODO custom adapter that takes Game objects (this will ultimately save you time and frustation)
-        ArrayList<String> items = new ArrayList<String>();
-        items.add("something");
-        final ArrayAdapter mAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(mAdapter);
+        mListView = (ListView) myFragmentView.findViewById(R.id.listview);
 
-        // add on click listener
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+        /**
+         * The following comment is the sample usage of ArraySwipeAdapter.
+         */
+//        String[] adapterData = new String[]{"Activity", "Service", "Content Provider", "Intent", "BroadcastReceiver", "ADT", "Sqlite3", "HttpClient",
+//                "DDMS", "Android Studio", "Fragment", "Loader", "Activity", "Service", "Content Provider", "Intent",
+//                "BroadcastReceiver", "ADT", "Sqlite3", "HttpClient", "Activity", "Service", "Content Provider", "Intent",
+//                "BroadcastReceiver", "ADT", "Sqlite3", "HttpClient"};
+//        mListView.setAdapter(new ArraySwipeAdapterSample<String>(this, R.layout.listview_item, R.id.position, adapterData));
 
-                //TODO change to individual game fragment... constructor should take game object
-                final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.container, new ViewIndividualGameFragment(), "ViewGameTag").addToBackStack("ViewGameTag");
-                ft.commit();
+        mAdapter = new ListViewAdapter(getActivity());
+        mListView.setAdapter(mAdapter);
+        mAdapter.setMode(Attributes.Mode.Single);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                ((SwipeLayout)(mListView.getChildAt(position - mListView.getFirstVisiblePosition()))).open(true);
+                showToast("Clicked");
+            }
+        });
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.e("ListView", "OnTouch");
+                return false;
+            }
+        });
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(mContext, "OnItemLongClickListener", Toast.LENGTH_SHORT).show();
+                ((SwipeLayout)(mListView.getChildAt(position - mListView.getFirstVisiblePosition()))).open(true);
+                return true;
+            }
+        });
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Log.e("ListView", "onScrollStateChanged");
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
             }
         });
 
-        // Create a ListView-specific touch listener. ListViews are given special treatment because
-        // by default they handle touches for their list items... i.e. they're in charge of drawing
-        // the pressed state (the list selector), handling list item clicks, etc.
-        SwipeDismissListViewTouchListener touchListener =
-                new SwipeDismissListViewTouchListener(
-                        listView,
-                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
-                            @Override
-                            public boolean canDismiss(int position) {
-                                return true;
-                            }
+        mListView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("ListView", "onItemSelected:" + position);
+            }
 
-                            @Override
-                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
-                                for (int position : reverseSortedPositions) {
-                                    mAdapter.remove(mAdapter.getItem(position));
-                                }
-                                mAdapter.notifyDataSetChanged();
-                            }
-                        });
-        listView.setOnTouchListener(touchListener);
-        // Setting this scroll listener is required to ensure that during ListView scrolling,
-        // we don't look for swipes.
-        listView.setOnScrollListener(touchListener.makeScrollListener());
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.e("ListView", "onNothingSelected:");
+            }
+        });
+
 
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -138,16 +156,16 @@ public class ViewGamesFragment extends ListFragment {
         return myFragmentView;
     }
 
+    private Toast mToast;
 
-    @Override
-    public void onListItemClick(ListView listView, View view, int position, long id) {
-        Toast.makeText(getActivity(),
-                "Clicked " + getListAdapter().getItem(position).toString(),
-                Toast.LENGTH_SHORT).show();
+    private void showToast(String message) {
+        if (mToast != null) {
+            mToast.cancel();
+            mToast = null;
+        }
+        mToast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
+        mToast.show();
     }
-
-
-
 
 
 }

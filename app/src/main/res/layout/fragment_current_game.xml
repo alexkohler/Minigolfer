@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     tools:context="kohlerbear.com.minigolfer.CurrentGameFragment">
 
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:id="@+id/dummyContainer"
         android:orientation="vertical"
@@ -49,17 +52,17 @@
 
     </TableRow>
 
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+    <!-- TODO: Update blank fragment layout -->
         <LinearLayout
+            android:id="@+id/buttonHolder"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <!-- TODO: Update blank fragment layout -->
+
     <TableLayout
         android:id="@+id/table"
         android:layout_width="match_parent"
@@ -565,28 +568,28 @@
 
         </TableRow>
 
-
     </TableLayout>
         <!-- Define our floating button -->
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/finishGameButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dip"
+            android:layout_marginRight="-10dip"
+            android:layout_marginTop="-10dip"
+            android:layout_marginBottom="-10dip"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:background="#009688"
+            android:text="Finish Game"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+    </ScrollView>
 
+        </LinearLayout>
     </HorizontalScrollView>
 
-            <com.gc.materialdesign.views.ButtonRectangle
-                android:id="@+id/finishGameButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-10dip"
-                android:layout_marginRight="-10dip"
-                android:layout_marginTop="-10dip"
-                android:layout_marginBottom="-10dip"
-                android:minHeight="0dp"
-                android:minWidth="0dp"
-                android:background="#009688"
-                android:text="Finish Game"
-                />
-        </LinearLayout>
-    </ScrollView>
-    </LinearLayout>
 
 
 

@@ -1,6 +1,7 @@
 package kohlerbear.com.minigolfer;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -117,11 +118,10 @@ public class CurrentGameFragment extends Fragment {
         //Let view know we have an options menu we wish to add
         setHasOptionsMenu(true);
 
-//        SharedPreferences.Editor.clear().commit();
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());//getActivity().getSharedPreferences("defaultUser", Context.MODE_PRIVATE);
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
         final String defaultUserKey = "defaultUser";
-        String defaultUser = prefs.getString(defaultUserKey, null);
-
+        SharedPreferences myPrefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_WORLD_READABLE);
+        String defaultUser = myPrefs.getString(defaultUserKey,"");
 
         m_helper = new DBHelper(getActivity());
         m_db = m_helper.getWritableDatabase();
@@ -138,6 +138,10 @@ public class CurrentGameFragment extends Fragment {
                 showToast("We need to add our default user " + defaultUser + " (DB empty)");
                 addRow(defaultUser);
                 m_playerDAO.insertPlayer(defaultUser);
+
+                // since we have a user, we can show our finish button
+                finishGameButton.setVisibility(View.VISIBLE);
+
             }
             // otherwise we have more than zero entries, and we should use this info to populate our card
             else {
@@ -167,6 +171,8 @@ public class CurrentGameFragment extends Fragment {
                         }
                     }
                 }
+                // since we have more than one user, we can show our finish button
+                finishGameButton.setVisibility(View.VISIBLE);
             }
         }
         else { //if we don't have a user stored in the sharedpreferences, hop on doing that
@@ -178,14 +184,19 @@ public class CurrentGameFragment extends Fragment {
                         @Override
                         public void onInput(MaterialDialog dialog, CharSequence input) {
                             String defaultUserInput;
-                            if (input.toString().trim().length() == 0) {
+                            if (input.toString().trim().length() == 0 || input.toString().equals("Name")) {
                                 defaultUserInput = "Player 1";
                             } else {
                                 defaultUserInput = input.toString();
                             }
 
                             //commit our change
-                            prefs.edit().putString(defaultUserKey, defaultUserInput).apply();
+                            SharedPreferences myPrefs = getActivity().getSharedPreferences("myPrefs", Context.MODE_WORLD_READABLE);
+                            SharedPreferences.Editor editor = myPrefs.edit();
+                            editor.putString(defaultUserKey, defaultUserInput);
+                            editor.commit();
+                            addRow(defaultUserInput);
+                            m_playerDAO.insertPlayer(defaultUserInput);
                         }
                     }).show();
         }
@@ -196,8 +207,14 @@ public class CurrentGameFragment extends Fragment {
 
         // handling UI
         TableRow titleTableRow = (TableRow) m_table.findViewById(R.id.titleTableRow);
+
         String playerName = ((EditText) titleTableRow.getChildAt(childNumber)).getText().toString();
         titleTableRow.removeViewAt(childNumber);
+
+        if (titleTableRow.getChildCount() == 1) {
+            com.gc.materialdesign.views.ButtonRectangle finishGameButton = (com.gc.materialdesign.views.ButtonRectangle) m_fragmentView.findViewById(R.id.finishGameButton);
+            finishGameButton.setVisibility(View.GONE);
+        }
 
         for (TableRow row : m_holeRows) {
             row.removeViewAt(childNumber);
@@ -320,6 +337,7 @@ public class CurrentGameFragment extends Fragment {
                 newPlayerEditText.setHint("New Player Name");
                 newPlayerEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(15)}); //Set max length to 20 characters
                 newPlayerEditText.setMaxLines(1);//only a single lined name
+                newPlayerEditText.setSingleLine(true);
                 new AlertDialog.Builder(getActivity())
                         .setTitle("Add Player")
                         .setView(newPlayerEditText)
@@ -389,6 +407,7 @@ public class CurrentGameFragment extends Fragment {
                 .title("Are you sure you wish to discard this game?")
                 .positiveText("Yes")
                 .negativeText("No")
+//                .content(R.string.input_content)
                 .callback(new MaterialDialog.ButtonCallback() {
                     @Override
                     public void onPositive(MaterialDialog dialog) {
@@ -401,6 +420,7 @@ public class CurrentGameFragment extends Fragment {
 
                         //despite deleting our players in the removeRow method, we still will clear our database
                         m_db.execSQL("delete from " + DBHelper.TABLE_CURRENT_GAME);
+
                     }
 
                     @Override
@@ -418,6 +438,13 @@ public class CurrentGameFragment extends Fragment {
                         .title("Are you sure you're finished?")
                         .positiveText("Yes")
                         .negativeText("No")
+                        .inputType(InputType.TYPE_CLASS_TEXT)
+                        .input("Location (optional):", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                                // Do something
+                            }
+                        })
                         .callback(new MaterialDialog.ButtonCallback() {
                             @Override
                             public void onPositive(MaterialDialog dialog) {
@@ -487,12 +514,14 @@ public class CurrentGameFragment extends Fragment {
 
         // ensure no names have changed (comparing against titleTableRow)
         TableRow titleTableRow = (TableRow) m_fragmentView.findViewById(R.id.floatingTitleRow);
-        for (int i = 1; i < titleTableRow.getChildCount(); i++) {
-            //title table row is our source of truth
-            String currentPlayerName = ((EditText) titleTableRow.getChildAt(i)).getText().toString();
-            Player currentPlayer = players.get(i - 1);
-            if (!currentPlayerName.equals(currentPlayer.getPlayerName())) {
-                m_playerDAO.updatePlayerName(currentPlayer.getPlayerId(), currentPlayerName);
+        if (! players.isEmpty()) {
+            for (int i = 1; i < titleTableRow.getChildCount(); i++) {
+                //title table row is our source of truth
+                String currentPlayerName = ((EditText) titleTableRow.getChildAt(i)).getText().toString();
+                Player currentPlayer = players.get(i - 1);
+                if (!currentPlayerName.equals(currentPlayer.getPlayerName())) {
+                    m_playerDAO.updatePlayerName(currentPlayer.getPlayerId(), currentPlayerName);
+                }
             }
         }
     }
@@ -506,7 +535,5 @@ public class CurrentGameFragment extends Fragment {
         }
         mToast = Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT);
         mToast.show();
-
-
     }
 }
