@@ -11,6 +11,7 @@ public class Game implements Serializable {
 
     //Game fields
     private long gameID;
+    private long date;
     private String location;
     private ArrayList<Player> players;
 
@@ -20,6 +21,14 @@ public class Game implements Serializable {
 
     public void setGameID(long gameID) {
         this.gameID = gameID;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date= date;
     }
 
     public String getLocation() {

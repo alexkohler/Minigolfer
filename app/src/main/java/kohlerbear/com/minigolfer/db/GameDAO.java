@@ -1,5 +1,6 @@
 package kohlerbear.com.minigolfer.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -17,14 +18,14 @@ public class GameDAO {
 
 
     private String[] mAllColumns = {
-            DBHelper.COLUMN_GAME_ID, DBHelper.COLUMN_GAME_LOC,DBHelper.COLUMN_PLAYER_ID,
-            DBHelper.COLUMN_PLAYER_NAME,DBHelper.COLUMN_GOLFBALL_COLOR, DBHelper.COLUMN_HOLE_1_SCORE,
-            DBHelper.COLUMN_HOLE_2_SCORE,DBHelper.COLUMN_HOLE_3_SCORE,DBHelper.COLUMN_HOLE_4_SCORE,
-            DBHelper.COLUMN_HOLE_5_SCORE,DBHelper.COLUMN_HOLE_6_SCORE,DBHelper.COLUMN_HOLE_7_SCORE,
-            DBHelper.COLUMN_HOLE_8_SCORE,DBHelper.COLUMN_HOLE_9_SCORE,DBHelper.COLUMN_HOLE_10_SCORE,
-            DBHelper.COLUMN_HOLE_11_SCORE,DBHelper.COLUMN_HOLE_12_SCORE,DBHelper.COLUMN_HOLE_13_SCORE,
-            DBHelper.COLUMN_HOLE_14_SCORE,DBHelper.COLUMN_HOLE_15_SCORE,DBHelper.COLUMN_HOLE_16_SCORE,
-            DBHelper.COLUMN_HOLE_17_SCORE,DBHelper.COLUMN_HOLE_18_SCORE
+            DBHelper.COLUMN_GAME_ID, DBHelper.COLUMN_GAME_DATE, DBHelper.COLUMN_GAME_LOC,
+            DBHelper.COLUMN_PLAYER_ID,DBHelper.COLUMN_PLAYER_NAME,DBHelper.COLUMN_GOLFBALL_COLOR,
+            DBHelper.COLUMN_HOLE_1_SCORE,DBHelper.COLUMN_HOLE_2_SCORE,DBHelper.COLUMN_HOLE_3_SCORE,
+            DBHelper.COLUMN_HOLE_4_SCORE,DBHelper.COLUMN_HOLE_5_SCORE,DBHelper.COLUMN_HOLE_6_SCORE,
+            DBHelper.COLUMN_HOLE_7_SCORE,DBHelper.COLUMN_HOLE_8_SCORE,DBHelper.COLUMN_HOLE_9_SCORE,
+            DBHelper.COLUMN_HOLE_10_SCORE,DBHelper.COLUMN_HOLE_11_SCORE,DBHelper.COLUMN_HOLE_12_SCORE,
+            DBHelper.COLUMN_HOLE_13_SCORE,DBHelper.COLUMN_HOLE_14_SCORE,DBHelper.COLUMN_HOLE_15_SCORE,
+            DBHelper.COLUMN_HOLE_16_SCORE,DBHelper.COLUMN_HOLE_17_SCORE,DBHelper.COLUMN_HOLE_18_SCORE
     };
 
     private String[] mPlayerColumns = {
@@ -66,6 +67,47 @@ public class GameDAO {
         mDbHelper.close();
     }
 
+    /*
+            DBHelper.COLUMN_PLAYER_ID,DBHelper.COLUMN_PLAYER_NAME,DBHelper.COLUMN_GOLFBALL_COLOR,
+            DBHelper.COLUMN_HOLE_1_SCORE,DBHelper.COLUMN_HOLE_2_SCORE,DBHelper.COLUMN_HOLE_3_SCORE,
+            DBHelper.COLUMN_HOLE_4_SCORE,DBHelper.COLUMN_HOLE_5_SCORE,DBHelper.COLUMN_HOLE_6_SCORE,
+            DBHelper.COLUMN_HOLE_7_SCORE,DBHelper.COLUMN_HOLE_8_SCORE,DBHelper.COLUMN_HOLE_9_SCORE,
+            DBHelper.COLUMN_HOLE_10_SCORE,DBHelper.COLUMN_HOLE_11_SCORE,DBHelper.COLUMN_HOLE_12_SCORE,
+            DBHelper.COLUMN_HOLE_13_SCORE,DBHelper.COLUMN_HOLE_14_SCORE,DBHelper.COLUMN_HOLE_15_SCORE,
+            DBHelper.COLUMN_HOLE_16_SCORE,DBHelper.COLUMN_HOLE_17_SCORE,DBHelper.COLUMN_HOLE_18_SCORE
+     */
+
+    public void insertGame(long gameUnixTime, String location, List<Player> players) {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.COLUMN_GAME_DATE, gameUnixTime);
+        values.put(DBHelper.COLUMN_GAME_LOC, location);
+        for (Player player : players) {
+            values.put(DBHelper.COLUMN_PLAYER_ID, player.getPlayerId());
+            values.put(DBHelper.COLUMN_PLAYER_NAME, player.getPlayerName());
+            values.put(DBHelper.COLUMN_GOLFBALL_COLOR, player.getGolfballColor());
+            values.put(DBHelper.COLUMN_HOLE_1_SCORE, player.getHole1score());
+            values.put(DBHelper.COLUMN_HOLE_2_SCORE, player.getHole2score());
+            values.put(DBHelper.COLUMN_HOLE_3_SCORE, player.getHole3score());
+            values.put(DBHelper.COLUMN_HOLE_4_SCORE, player.getHole4score());
+            values.put(DBHelper.COLUMN_HOLE_5_SCORE, player.getHole5score());
+            values.put(DBHelper.COLUMN_HOLE_6_SCORE, player.getHole6score());
+            values.put(DBHelper.COLUMN_HOLE_7_SCORE, player.getHole7score());
+            values.put(DBHelper.COLUMN_HOLE_8_SCORE, player.getHole8score());
+            values.put(DBHelper.COLUMN_HOLE_9_SCORE, player.getHole9score());
+            values.put(DBHelper.COLUMN_HOLE_10_SCORE, player.getHole10score());
+            values.put(DBHelper.COLUMN_HOLE_11_SCORE, player.getHole11score());
+            values.put(DBHelper.COLUMN_HOLE_12_SCORE, player.getHole12score());
+            values.put(DBHelper.COLUMN_HOLE_13_SCORE, player.getHole13score());
+            values.put(DBHelper.COLUMN_HOLE_14_SCORE, player.getHole14score());
+            values.put(DBHelper.COLUMN_HOLE_15_SCORE, player.getHole15score());
+            values.put(DBHelper.COLUMN_HOLE_16_SCORE, player.getHole16score());
+            values.put(DBHelper.COLUMN_HOLE_17_SCORE, player.getHole17score());
+            values.put(DBHelper.COLUMN_HOLE_18_SCORE, player.getHole18score());
+        }
+
+        mDatabase.insert(DBHelper.TABLE_PREVIOUS_GAMES, null, values);
+    }
+
     public List<Game> getAllGames() {
         List<Game> gamesList = new ArrayList<Game>();
 
@@ -89,7 +131,8 @@ public class GameDAO {
         // take care of basic field setting
         long gameID = cursor.getLong(0);
         game.setGameID(gameID);
-        game.setLocation(cursor.getString(1));
+        game.setDate(cursor.getLong(1));
+        game.setLocation(cursor.getString(2));
 
 
         // have to do something a little different for players list - get game id, then query for all players with that game id
@@ -99,7 +142,7 @@ public class GameDAO {
                 mPlayerColumns, DBHelper.COLUMN_GAME_ID + "=?", new String[]{String.valueOf(gameID)}, null, null, null);
 
         playerCursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
+        while (!playerCursor.isAfterLast()) {
             Player player = cursorToPlayer(playerCursor);
             listPlayers.add(player);
             playerCursor.moveToNext();

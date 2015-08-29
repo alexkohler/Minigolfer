@@ -35,11 +35,12 @@ public class Player implements Serializable {
 
     public Player() {}
 
-//TODO do we need a big constructor?
-//    public Player(String playerName, String color) {
-//        this.playerName = playerName;
+//TODO do we need a big constructor? for testing yes, but remove this later
+    public Player(String playerName, /*String color,*/ int hole1scole) {
+        this.playerName = playerName;
 //        this.golfballColor = color;
-//    }
+        this.hole1score = hole1scole;
+    }
 
     public long getPlayerId() {
         return playerId;

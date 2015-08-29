@@ -39,6 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // columns of the previous_game table
     public static final String TABLE_PREVIOUS_GAMES = "previous_games";
     public static final String COLUMN_GAME_ID = "game_id";
+    public static final String COLUMN_GAME_DATE = "game_date";
     public static final String COLUMN_GAME_LOC = "game_location";
 //    public static final String COLUMN_PLAYER_ID = COLUMN_PLAYER_ID;
 //    public static final String COLUMN_PLAYER_NAME   = "player_name";
@@ -47,11 +48,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "minigolfer.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
+    //version 1 - base
+    //version 2 -  adding date column to PREVIOUS_GAMES table
 
     // SQL statement of the previous_game table creation
     private static final String SQL_CREATE_TABLE_PREVIOUS_GAME = "CREATE TABLE " + TABLE_PREVIOUS_GAMES + "("
             + COLUMN_GAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_GAME_DATE + " INTEGER, " // unix time (integer scales so this is essentially our "long"
             + COLUMN_GAME_LOC + " TEXT, "
             + COLUMN_PLAYER_ID + " INTEGER, "
             + COLUMN_PLAYER_NAME + " TEXT NOT NULL, "

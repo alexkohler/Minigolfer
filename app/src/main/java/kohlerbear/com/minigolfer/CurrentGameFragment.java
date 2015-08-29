@@ -41,9 +41,12 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import kohlerbear.com.minigolfer.db.DBHelper;
+import kohlerbear.com.minigolfer.db.Game;
+import kohlerbear.com.minigolfer.db.GameDAO;
 import kohlerbear.com.minigolfer.db.Player;
 import kohlerbear.com.minigolfer.db.PlayerDAO;
 
@@ -432,6 +435,8 @@ public class CurrentGameFragment extends Fragment {
 
     View.OnClickListener finishButtonPressed() {
         return new View.OnClickListener() {
+
+            String locationInput = "";
             @Override
             public void onClick(View view) {
                 new MaterialDialog.Builder(getActivity())
@@ -442,7 +447,7 @@ public class CurrentGameFragment extends Fragment {
                         .input("Location (optional):", "", new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
-                                // Do something
+                                //callback gets hit after positive, so we will just be using dialog.getInputEditText()
                             }
                         })
                         .callback(new MaterialDialog.ButtonCallback() {
@@ -450,6 +455,14 @@ public class CurrentGameFragment extends Fragment {
                             public void onPositive(MaterialDialog dialog) {
                                 //time to add our game to PREVIOUS_GAMES11
 
+                                //We will be storing dates as unix time
+                                EditText locationEditText = dialog.getInputEditText();
+                                String locationInput = locationEditText.getText().toString();
+                                System.out.println();
+                                saveGame(locationInput);
+//                                Calendar mydate = Calendar.getInstance();
+//                                mydate.setTimeInMillis(unixTime*1000);
+//                                showToast(mydate.get(Calendar.MONTH) + "-" + mydate.get(Calendar.DAY_OF_MONTH) + "-" + mydate.get(Calendar.YEAR));
                             }
 
                             @Override
@@ -505,15 +518,33 @@ public class CurrentGameFragment extends Fragment {
         };
     }
 
+    public void saveGame(String location)
+    {
+
+        long unixTime = System.currentTimeMillis() / 1000;
+        GameDAO gameDAO = new GameDAO(getActivity());
+        //ensure names are updated
+        updatePlayerNames();
+        gameDAO.insertGame(unixTime, location.trim(),  m_playerDAO.getAllPlayers());
+
+    }
+
     @Override
     public void onStop() {
         super.onStop();
+        updatePlayerNames();
+    }
 
+
+    //TODO watch title vs floating
+    //ensures we have the latest player names (comparing titletablerow to database)
+    private void updatePlayerNames()
+    {
         // grab our players
         List<Player> players = m_playerDAO.getAllPlayers();
+        TableRow titleTableRow = (TableRow) m_fragmentView.findViewById(R.id.floatingTitleRow);
 
         // ensure no names have changed (comparing against titleTableRow)
-        TableRow titleTableRow = (TableRow) m_fragmentView.findViewById(R.id.floatingTitleRow);
         if (! players.isEmpty()) {
             for (int i = 1; i < titleTableRow.getChildCount(); i++) {
                 //title table row is our source of truth
